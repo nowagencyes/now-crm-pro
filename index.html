@@ -1,38 +1,220 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOW Agency CRM | Login</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOW Agency CRM</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#050505;
+      color:white;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:absolute;
+      width:600px;
+      height:600px;
+      background:radial-gradient(circle, rgba(255,106,0,.25), transparent 70%);
+      top:-200px;
+      right:-200px;
+    }
+
+    .login-container{
+      width:420px;
+      background:#111;
+      border:1px solid #222;
+      border-radius:28px;
+      padding:40px;
+      position:relative;
+      z-index:2;
+      box-shadow:0 0 40px rgba(255,106,0,.15);
+    }
+
+    .logo{
+      width:120px;
+      margin:auto;
+      margin-bottom:25px;
+      display:block;
+      object-fit:contain;
+    }
+
+    h1{
+      text-align:center;
+      color:#ff6a00;
+      margin-bottom:10px;
+      font-size:38px;
+    }
+
+    p{
+      text-align:center;
+      color:#aaa;
+      margin-bottom:35px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:10px;
+      margin-top:20px;
+      color:#ddd;
+      font-weight:bold;
+    }
+
+    input{
+      width:100%;
+      padding:16px;
+      border-radius:14px;
+      border:none;
+      background:#1b1b1b;
+      color:white;
+      font-size:15px;
+      outline:none;
+      border:1px solid #333;
+    }
+
+    input:focus{
+      border:1px solid #ff6a00;
+    }
+
+    button{
+      width:100%;
+      margin-top:30px;
+      padding:16px;
+      border:none;
+      border-radius:16px;
+      background:linear-gradient(135deg,#ff6a00,#ff8c2b);
+      color:white;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    button:hover{
+      transform:scale(1.02);
+    }
+
+    .info{
+      margin-top:25px;
+      text-align:center;
+      color:#777;
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .users{
+      margin-top:20px;
+      background:#1a1a1a;
+      padding:18px;
+      border-radius:16px;
+      border:1px solid #2c2c2c;
+    }
+
+    .users h3{
+      color:#ff6a00;
+      margin-bottom:12px;
+      text-align:center;
+    }
+
+    .users p{
+      margin:8px 0;
+      color:#ddd;
+      font-size:14px;
+    }
+
+    @media(max-width:500px){
+      .login-container{
+        width:92%;
+        padding:30px;
+      }
+
+      h1{
+        font-size:30px;
+      }
+    }
+  </style>
 </head>
-<body class="login-body">
-  <main class="login-wrapper">
-    <section class="login-card">
-      <div class="logo-frame">
-        <img src="assets/now-logo.png" alt="NOW Agency Logo" />
-      </div>
 
-      <h1>NOW Agency CRM</h1>
-      <p>CRM + calendario de publicaciones + conexión social para NOW Agency.</p>
+<body>
 
-      <label>Email</label>
-      <input id="email" type="email" placeholder="tu@email.com" autocomplete="email" />
+  <div class="login-container">
 
-      <label>Contraseña</label>
-      <input id="password" type="password" placeholder="Mínimo 6 caracteres" autocomplete="current-password" />
+    <img src="assets/now-logo.png" class="logo" alt="NOW Agency Logo">
 
-      <div class="login-actions">
-        <button onclick="login()" class="btn-primary">Entrar</button>
-        <button onclick="register()" class="btn-secondary">Crear usuario</button>
-      </div>
+    <h1>NOW CRM</h1>
 
-      <div id="status" class="status"></div>
-    </section>
-  </main>
+    <p>Creative Agency Management System</p>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js"></script>
-  <script src="auth.js"></script>
+    <label>Usuario</label>
+    <input type="text" id="email" placeholder="Ingresa tu usuario">
+
+    <label>Contraseña</label>
+    <input type="password" id="password" placeholder="Ingresa tu contraseña">
+
+    <button onclick="login()">
+      Entrar al CRM
+    </button>
+
+    <div class="users">
+
+      <h3>Usuarios CRM</h3>
+
+      <p><strong>Usuario:</strong> facunow</p>
+      <p><strong>Pass:</strong> now123</p>
+
+      <br>
+
+      <p><strong>Usuario:</strong> panchonow</p>
+      <p><strong>Pass:</strong> now123456</p>
+
+    </div>
+
+    <div class="info">
+      NOW Agency CRM PRO V2<br>
+      Social Planner · Producción · Facturación · RRSS
+    </div>
+
+  </div>
+
+  <script>
+
+    function login(){
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // USUARIO FACU
+      if(email === "facunow" && password === "now123"){
+        window.location.href = "dashboard.html";
+        return;
+      }
+
+      // USUARIO PANCHO
+      if(email === "panchonow" && password === "now123456"){
+        window.location.href = "dashboard.html";
+        return;
+      }
+
+      alert("Usuario o contraseña incorrectos");
+
+    }
+
+  </script>
+
 </body>
 </html>
+```
