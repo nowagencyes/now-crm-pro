@@ -1,194 +1,182 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOW Agency CRM PRO V2</title>
-  <link rel="stylesheet" href="style.css" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NOW CRM Dashboard</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#050505;
+color:white;
+display:flex;
+min-height:100vh;
+overflow:hidden;
+}
+
+.sidebar{
+width:260px;
+background:#111;
+padding:30px 20px;
+border-right:1px solid #222;
+}
+
+.logo{
+width:100px;
+display:block;
+margin:auto;
+margin-bottom:20px;
+}
+
+.sidebar h2{
+text-align:center;
+color:#ff6a00;
+margin-bottom:30px;
+}
+
+.menu{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.menu button{
+padding:15px;
+border:none;
+border-radius:12px;
+background:#1d1d1d;
+color:white;
+font-size:15px;
+cursor:pointer;
+}
+
+.menu button:hover{
+background:#ff6a00;
+}
+
+.main{
+flex:1;
+padding:40px;
+}
+
+.title{
+font-size:52px;
+font-weight:bold;
+color:#ff6a00;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#aaa;
+margin-bottom:40px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.card{
+background:#111;
+padding:30px;
+border-radius:20px;
+border:1px solid #222;
+}
+
+.card h3{
+color:#ff6a00;
+margin-bottom:10px;
+}
+
+.card p{
+color:#aaa;
+line-height:1.5;
+}
+
+</style>
+
 </head>
+
 <body>
-  <div class="app">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-logo"><img src="assets/now-logo.png" alt="NOW Agency" /></div>
-        <div><h2>NOW</h2><span>CRM PRO V2</span></div>
-      </div>
 
-      <nav class="menu">
-        <button class="active" data-view="dashboard">Dashboard</button>
-        <button data-view="clientes">Clientes</button>
-        <button data-view="facturas">Facturas</button>
-        <button data-view="planner">Social Planner</button>
-        <button data-view="social">Conexiones RRSS</button>
-        <button data-view="produccion">Producción</button>
-        <button data-view="accesos">Accesos</button>
-      </nav>
+<div class="sidebar">
 
-      <button class="logout" onclick="logout()">Salir</button>
-    </aside>
+<img src="assets/now-logo.png" class="logo">
 
-    <main class="main">
-      <header class="topbar">
-        <div>
-          <p>Creative Agency Management</p>
-          <h1 id="page-title">Dashboard NOW Agency</h1>
-        </div>
-        <button id="new-btn" class="btn-primary small">+ Nuevo</button>
-      </header>
+<h2>NOW CRM</h2>
 
-      <section id="dashboard" class="view active-view">
-        <div class="metrics">
-          <div class="card metric"><span>Clientes</span><strong id="m-clientes">0</strong></div>
-          <div class="card metric"><span>Facturado</span><strong id="m-facturado">0€</strong></div>
-          <div class="card metric"><span>Publicaciones</span><strong id="m-posts">0</strong></div>
-          <div class="card metric"><span>Proyectos</span><strong id="m-proyectos">0</strong></div>
-        </div>
+<div class="menu">
 
-        <section class="grid">
-          <div class="card large">
-            <div class="card-head"><h3>Próximas publicaciones</h3><span>Planner</span></div>
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Fecha</th><th>Cliente</th><th>Red</th><th>Tipo</th><th>Estado</th></tr></thead>
-                <tbody id="dash-posts"></tbody>
-              </table>
-            </div>
-          </div>
+<button>Dashboard</button>
+<button>Clientes</button>
+<button>Facturación</button>
+<button>Producción</button>
+<button>Calendario</button>
+<button>Redes Sociales</button>
+<button>Planner</button>
+<button>Configuración</button>
 
-          <div class="card">
-            <div class="card-head"><h3>Conexiones</h3><span>OAuth</span></div>
-            <ul class="list" id="dash-social"></ul>
-          </div>
-        </section>
-      </section>
+</div>
 
-      <section id="clientes" class="view">
-        <div class="card">
-          <div class="card-head"><h3>Clientes</h3><span>Base de datos</span></div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Nombre</th><th>Empresa</th><th>Email</th><th>Servicio</th><th>Estado</th><th></th></tr></thead>
-              <tbody id="clientes-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+</div>
 
-      <section id="facturas" class="view">
-        <div class="card">
-          <div class="card-head"><h3>Facturas / Proformas</h3><span>PDF ready</span></div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Nº</th><th>Tipo</th><th>Cliente</th><th>Concepto</th><th>Total</th><th>Estado</th><th></th></tr></thead>
-              <tbody id="facturas-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+<div class="main">
 
-      <section id="planner" class="view">
-        <div class="card">
-          <div class="card-head">
-            <h3>Calendario de publicaciones</h3>
-            <span>Tipo Metricool</span>
-          </div>
-          <div class="planner-layout">
-            <div class="calendar" id="calendar-grid"></div>
-            <div class="planner-side">
-              <h3>Estados</h3>
-              <div class="legend"><span class="dot idea"></span>Idea</div>
-              <div class="legend"><span class="dot approval"></span>Aprobación</div>
-              <div class="legend"><span class="dot scheduled"></span>Programado</div>
-              <div class="legend"><span class="dot published"></span>Publicado</div>
-              <p class="note">La publicación directa requiere conectar Meta/TikTok con OAuth y permisos aprobados.</p>
-            </div>
-          </div>
-        </div>
+<div class="title">
+NOW Agency CRM
+</div>
 
-        <div class="card">
-          <div class="card-head"><h3>Contenido planificado</h3><span>RRSS</span></div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Fecha</th><th>Hora</th><th>Cliente</th><th>Red</th><th>Tipo</th><th>Caption</th><th>Estado</th><th>Acción</th><th></th></tr></thead>
-              <tbody id="planner-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+<div class="subtitle">
+Panel principal de gestión
+</div>
 
-      <section id="social" class="view">
-        <div class="card warning">
-          Para publicar directamente, primero debes crear una App en Meta Developers y TikTok Developers. Aquí ya queda preparada la pantalla para pedir permisos y guardar conexiones.
-        </div>
-        <div class="connect-grid">
-          <div class="card connect-card">
-            <h3>Instagram / Facebook</h3>
-            <p>Conecta cuentas profesionales usando Meta OAuth.</p>
-            <button onclick="connectMeta()" class="btn-primary">Conectar Meta</button>
-          </div>
-          <div class="card connect-card">
-            <h3>TikTok</h3>
-            <p>Conecta TikTok usando TikTok OAuth.</p>
-            <button onclick="connectTikTok()" class="btn-primary">Conectar TikTok</button>
-          </div>
-          <div class="card connect-card">
-            <h3>Google Calendar</h3>
-            <p>Preparado para vincular eventos, rodajes y entregas.</p>
-            <button onclick="connectGoogle()" class="btn-primary">Conectar Google</button>
-          </div>
-        </div>
+<div class="cards">
 
-        <div class="card">
-          <div class="card-head"><h3>Cuentas conectadas</h3><span>Tokens</span></div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Plataforma</th><th>Cuenta</th><th>Estado</th><th>Fecha</th><th></th></tr></thead>
-              <tbody id="social-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+<div class="card">
+<h3>Clientes</h3>
+<p>Gestión de clientes y accesos.</p>
+</div>
 
-      <section id="produccion" class="view">
-        <div class="card">
-          <div class="card-head"><h3>Producción audiovisual</h3><span>Rodajes</span></div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Proyecto</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th>Notas</th><th></th></tr></thead>
-              <tbody id="produccion-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+<div class="card">
+<h3>Facturación</h3>
+<p>Facturas y proformas automáticas.</p>
+</div>
 
-      <section id="accesos" class="view">
-        <div class="card warning">Recomendación: no guardar contraseñas reales en texto plano. Usa esta sección para usuarios, emails y notas seguras.</div>
-        <div class="card">
-          <div class="card-head"><h3>Accesos RRSS</h3><span>Privado</span></div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Cliente</th><th>Instagram</th><th>TikTok</th><th>Facebook</th><th>Email</th><th>Notas</th><th></th></tr></thead>
-              <tbody id="accesos-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+<div class="card">
+<h3>Planner</h3>
+<p>Calendario de publicaciones tipo Metricool.</p>
+</div>
 
-  <dialog id="modal">
-    <form id="record-form">
-      <h3 id="modal-title">Nuevo registro</h3>
-      <div id="fields"></div>
-      <menu>
-        <button type="button" class="btn-secondary" onclick="closeModal()">Cancelar</button>
-        <button type="submit" class="btn-primary">Guardar</button>
-      </menu>
-    </form>
-  </dialog>
+<div class="card">
+<h3>Producción</h3>
+<p>Rodajes, shootings y organización.</p>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js"></script>
-  <script src="crm.js"></script>
+<div class="card">
+<h3>Redes Sociales</h3>
+<p>Instagram, TikTok y Facebook.</p>
+</div>
+
+<div class="card">
+<h3>Google Calendar</h3>
+<p>Sincronización de calendario.</p>
+</div>
+
+</div>
+
+</div>
+
 </body>
 </html>
