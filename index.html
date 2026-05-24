@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOW Agency CRM | Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="login-body">
+  <main class="login-wrapper">
+    <section class="login-card">
+      <div class="logo-frame">
+        <img src="assets/now-logo.png" alt="NOW Agency Logo" />
+      </div>
+
+      <h1>NOW Agency CRM</h1>
+      <p>CRM + calendario de publicaciones + conexión social para NOW Agency.</p>
+
+      <label>Email</label>
+      <input id="email" type="email" placeholder="tu@email.com" autocomplete="email" />
+
+      <label>Contraseña</label>
+      <input id="password" type="password" placeholder="Mínimo 6 caracteres" autocomplete="current-password" />
+
+      <div class="login-actions">
+        <button onclick="login()" class="btn-primary">Entrar</button>
+        <button onclick="register()" class="btn-secondary">Crear usuario</button>
+      </div>
+
+      <div id="status" class="status"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

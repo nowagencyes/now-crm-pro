@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>OAuth Callback | NOW CRM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+  <main class="login-wrapper">
+    <section class="login-card">
+      <div class="logo-frame"><img src="assets/now-logo.png" alt="NOW"></div>
+      <h1>Conexión recibida</h1>
+      <p>El proveedor devolvió un código de autorización. Para guardar tokens de forma segura hace falta un backend/Cloudflare Worker.</p>
+      <div id="oauth-data" class="status"></div>
+      <button class="btn-primary" onclick="location.href='dashboard.html'">Volver al CRM</button>
+    </section>
+  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("oauth-data").textContent = "Proveedor: " + (params.get("state") || "-") + " · Código recibido: " + (params.get("code") ? "Sí" : "No");
+  </script>
+</body>
+</html>
