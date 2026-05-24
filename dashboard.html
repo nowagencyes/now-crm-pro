@@ -1,182 +1,168 @@
+Pega este `dashboard.html` entero. Ahora los botones ya cambian de sección:
+
+```html
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NOW CRM Dashboard</title>
-
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
-
-body{
-background:#050505;
-color:white;
-display:flex;
-min-height:100vh;
-overflow:hidden;
-}
-
-.sidebar{
-width:260px;
-background:#111;
-padding:30px 20px;
-border-right:1px solid #222;
-}
-
-.logo{
-width:100px;
-display:block;
-margin:auto;
-margin-bottom:20px;
-}
-
-.sidebar h2{
-text-align:center;
-color:#ff6a00;
-margin-bottom:30px;
-}
-
-.menu{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-.menu button{
-padding:15px;
-border:none;
-border-radius:12px;
-background:#1d1d1d;
-color:white;
-font-size:15px;
-cursor:pointer;
-}
-
-.menu button:hover{
-background:#ff6a00;
-}
-
-.main{
-flex:1;
-padding:40px;
-}
-
-.title{
-font-size:52px;
-font-weight:bold;
-color:#ff6a00;
-margin-bottom:10px;
-}
-
-.subtitle{
-color:#aaa;
-margin-bottom:40px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-}
-
-.card{
-background:#111;
-padding:30px;
-border-radius:20px;
-border:1px solid #222;
-}
-
-.card h3{
-color:#ff6a00;
-margin-bottom:10px;
-}
-
-.card p{
-color:#aaa;
-line-height:1.5;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#050505;color:white;display:flex;min-height:100vh}
+.sidebar{width:260px;background:#111;padding:30px 20px;border-right:1px solid #222}
+.logo{width:100px;display:block;margin:auto;margin-bottom:20px}
+.sidebar h2{text-align:center;color:#ff6a00;margin-bottom:30px}
+.menu{display:flex;flex-direction:column;gap:15px}
+.menu button{padding:15px;border:none;border-radius:12px;background:#1d1d1d;color:white;font-size:15px;cursor:pointer}
+.menu button:hover,.menu button.active{background:#ff6a00}
+.main{flex:1;padding:40px;overflow:auto}
+.title{font-size:48px;font-weight:bold;color:#ff6a00;margin-bottom:10px}
+.subtitle{color:#aaa;margin-bottom:35px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#111;padding:28px;border-radius:20px;border:1px solid #222}
+.card h3{color:#ff6a00;margin-bottom:10px}
+.card p{color:#aaa;line-height:1.5}
+.section{display:none}
+.section.active{display:block}
+input,textarea,select{width:100%;padding:14px;margin:8px 0 16px;border-radius:12px;border:1px solid #333;background:#1a1a1a;color:white}
+.form{max-width:600px}
+.save{background:#ff6a00;color:white;border:none;padding:14px 20px;border-radius:12px;font-weight:bold}
 </style>
-
 </head>
 
 <body>
 
 <div class="sidebar">
-
 <img src="assets/now-logo.png" class="logo">
-
 <h2>NOW CRM</h2>
 
 <div class="menu">
-
-<button>Dashboard</button>
-<button>Clientes</button>
-<button>Facturación</button>
-<button>Producción</button>
-<button>Calendario</button>
-<button>Redes Sociales</button>
-<button>Planner</button>
-<button>Configuración</button>
-
+<button class="active" onclick="showSection('dashboard', this)">Dashboard</button>
+<button onclick="showSection('clientes', this)">Clientes</button>
+<button onclick="showSection('facturacion', this)">Facturación</button>
+<button onclick="showSection('produccion', this)">Producción</button>
+<button onclick="showSection('calendario', this)">Calendario</button>
+<button onclick="showSection('redes', this)">Redes Sociales</button>
+<button onclick="showSection('planner', this)">Planner</button>
+<button onclick="showSection('configuracion', this)">Configuración</button>
 </div>
-
 </div>
 
 <div class="main">
 
-<div class="title">
-NOW Agency CRM
-</div>
-
-<div class="subtitle">
-Panel principal de gestión
-</div>
-
+<section id="dashboard" class="section active">
+<div class="title">NOW Agency CRM</div>
+<div class="subtitle">Panel principal de gestión</div>
 <div class="cards">
+<div class="card"><h3>Clientes</h3><p>Gestión de clientes y accesos.</p></div>
+<div class="card"><h3>Facturación</h3><p>Facturas y proformas automáticas.</p></div>
+<div class="card"><h3>Planner</h3><p>Calendario de publicaciones tipo Metricool.</p></div>
+<div class="card"><h3>Producción</h3><p>Rodajes, shootings y organización.</p></div>
+<div class="card"><h3>Redes Sociales</h3><p>Instagram, TikTok y Facebook.</p></div>
+<div class="card"><h3>Google Calendar</h3><p>Sincronización de calendario.</p></div>
+</div>
+</section>
 
-<div class="card">
-<h3>Clientes</h3>
-<p>Gestión de clientes y accesos.</p>
+<section id="clientes" class="section">
+<div class="title">Clientes</div>
+<div class="subtitle">Alta y gestión de clientes</div>
+<div class="form">
+<input placeholder="Nombre del cliente">
+<input placeholder="Empresa">
+<input placeholder="Email">
+<input placeholder="Teléfono">
+<input placeholder="Instagram">
+<input placeholder="TikTok">
+<input placeholder="Facebook">
+<textarea placeholder="Notas internas"></textarea>
+<button class="save">Guardar cliente</button>
+</div>
+</section>
+
+<section id="facturacion" class="section">
+<div class="title">Facturación</div>
+<div class="subtitle">Proformas y facturas</div>
+<div class="form">
+<input placeholder="Cliente">
+<input placeholder="Concepto">
+<input placeholder="Importe €">
+<select><option>Proforma</option><option>Factura</option></select>
+<button class="save">Crear documento</button>
+</div>
+</section>
+
+<section id="produccion" class="section">
+<div class="title">Producción</div>
+<div class="subtitle">Rodajes, shootings y entregas</div>
+<div class="form">
+<input placeholder="Proyecto">
+<input placeholder="Cliente">
+<input type="date">
+<select><option>Briefing</option><option>Grabando</option><option>Editando</option><option>Entregado</option></select>
+<textarea placeholder="Notas de producción"></textarea>
+<button class="save">Guardar producción</button>
+</div>
+</section>
+
+<section id="calendario" class="section">
+<div class="title">Calendario</div>
+<div class="subtitle">Eventos, entregas y reuniones</div>
+<div class="cards">
+<div class="card"><h3>Lunes</h3><p>Sin eventos.</p></div>
+<div class="card"><h3>Martes</h3><p>Sin eventos.</p></div>
+<div class="card"><h3>Miércoles</h3><p>Sin eventos.</p></div>
+</div>
+</section>
+
+<section id="redes" class="section">
+<div class="title">Redes Sociales</div>
+<div class="subtitle">Gestión de cuentas y contenido</div>
+<div class="form">
+<input placeholder="Cliente">
+<input placeholder="Instagram">
+<input placeholder="TikTok">
+<input placeholder="Facebook">
+<textarea placeholder="Accesos / notas"></textarea>
+<button class="save">Guardar redes</button>
+</div>
+</section>
+
+<section id="planner" class="section">
+<div class="title">Planner</div>
+<div class="subtitle">Calendario de publicaciones tipo Metricool</div>
+<div class="form">
+<input placeholder="Cliente">
+<select><option>Instagram</option><option>TikTok</option><option>Facebook</option></select>
+<select><option>Post</option><option>Reel</option><option>Story</option><option>Carrusel</option></select>
+<input type="date">
+<input type="time">
+<textarea placeholder="Copy / caption"></textarea>
+<textarea placeholder="Hashtags"></textarea>
+<button class="save">Programar publicación</button>
+</div>
+</section>
+
+<section id="configuracion" class="section">
+<div class="title">Configuración</div>
+<div class="subtitle">Ajustes del CRM</div>
+<div class="cards">
+<div class="card"><h3>Usuarios</h3><p>facunow / panchonow</p></div>
+<div class="card"><h3>Estado</h3><p>CRM local activo.</p></div>
+</div>
+</section>
+
 </div>
 
-<div class="card">
-<h3>Facturación</h3>
-<p>Facturas y proformas automáticas.</p>
-</div>
-
-<div class="card">
-<h3>Planner</h3>
-<p>Calendario de publicaciones tipo Metricool.</p>
-</div>
-
-<div class="card">
-<h3>Producción</h3>
-<p>Rodajes, shootings y organización.</p>
-</div>
-
-<div class="card">
-<h3>Redes Sociales</h3>
-<p>Instagram, TikTok y Facebook.</p>
-</div>
-
-<div class="card">
-<h3>Google Calendar</h3>
-<p>Sincronización de calendario.</p>
-</div>
-
-</div>
-
-</div>
+<script>
+function showSection(id, btn){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+}
+</script>
 
 </body>
 </html>
+```
