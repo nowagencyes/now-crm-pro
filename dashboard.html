@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOW CRM PRO Dashboard</title>
+<title>NOW Agency CRM PRO</title>
+<link rel="preconnect" href="https://fonts.cdnfonts.com">
+<link href="https://fonts.cdnfonts.com/css/ethnocentric" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{background:#070707;color:#fff;min-height:100vh;display:flex}
@@ -50,6 +52,60 @@ textarea{min-height:90px;resize:vertical}.form-grid{display:grid;grid-template-c
 .legend-list{display:flex;flex-direction:column;gap:10px}
 .legend-item{color:#ddd}.legend-color{display:inline-block;width:14px;height:14px;border-radius:4px;background:#ff6a00;margin-right:8px}
 
+
+.brand-title{font-size:28px!important;font-weight:900!important;line-height:1.1;text-align:center;margin-bottom:28px;letter-spacing:.5px}
+.brand-orange{color:#ff6a00;text-shadow:0 0 22px rgba(255,106,0,.45)}
+.brand-white{color:#fff;text-shadow:0 0 18px rgba(255,255,255,.18)}
+.main-title{font-size:52px!important;font-weight:900!important;line-height:1.05;margin-bottom:10px;letter-spacing:-1px;transform-style:preserve-3d;animation:titleFloat 5s ease-in-out infinite}
+@keyframes titleFloat{0%,100%{transform:translateY(0) rotateX(0deg)}50%{transform:translateY(-6px) rotateX(4deg)}}
+body:before{content:"";position:fixed;inset:-40%;background:radial-gradient(circle at 20% 20%,rgba(255,106,0,.15),transparent 24%),radial-gradient(circle at 80% 10%,rgba(255,255,255,.05),transparent 20%),radial-gradient(circle at 50% 90%,rgba(255,106,0,.12),transparent 26%);z-index:-2;animation:bgMove 14s ease-in-out infinite alternate}
+body:after{content:"";position:fixed;inset:0;background:linear-gradient(120deg,transparent,rgba(255,106,0,.035),transparent);z-index:-1;animation:lightSweep 8s linear infinite}
+@keyframes bgMove{from{transform:translate3d(-2%,-2%,0) scale(1)}to{transform:translate3d(2%,2%,0) scale(1.04)}}
+@keyframes lightSweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.sidebar{box-shadow:18px 0 60px rgba(0,0,0,.45);transform-style:preserve-3d}
+.logo{filter:drop-shadow(0 18px 28px rgba(255,106,0,.20));transition:.35s ease;transform-style:preserve-3d}
+.logo:hover{transform:perspective(800px) rotateY(14deg) rotateX(6deg) scale(1.07)}
+.menu button{position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;transform-style:preserve-3d}
+.menu button:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.12),transparent);transform:translateX(-120%);transition:.45s ease}
+.menu button:hover:before{transform:translateX(120%)}
+.menu button:hover,.menu button.active{transform:perspective(800px) translateZ(16px) rotateX(4deg);box-shadow:0 16px 34px rgba(255,106,0,.28)}
+.section{animation:sectionIn .45s ease both;transform-style:preserve-3d}
+@keyframes sectionIn{from{opacity:0;transform:translateY(18px) rotateX(5deg)}to{opacity:1;transform:translateY(0) rotateX(0)}}
+.card,.form-card,.finance-kpi,.chart-box,.agenda-panel,.day{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;transform-style:preserve-3d;will-change:transform}
+.card:hover,.finance-kpi:hover,.chart-box:hover,.agenda-panel:hover{transform:perspective(1000px) rotateX(5deg) rotateY(-4deg) translateY(-8px);box-shadow:0 28px 80px rgba(255,106,0,.18);border-color:rgba(255,106,0,.45)}
+.day:hover{transform:perspective(900px) translateY(-6px) rotateX(5deg);box-shadow:0 18px 45px rgba(255,106,0,.16)}
+.table{box-shadow:0 24px 70px rgba(0,0,0,.32);transition:.3s ease}
+.table tr{transition:.22s ease}
+.table tbody tr:hover{background:rgba(255,106,0,.08);transform:scale(1.005)}
+.add,.save,.danger,.secondary{transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;transform-style:preserve-3d}
+.add:hover,.save:hover,.secondary:hover{transform:perspective(700px) translateY(-3px) rotateX(6deg);box-shadow:0 18px 35px rgba(255,106,0,.25);filter:brightness(1.08)}
+.danger:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(192,57,43,.25)}
+input,select,textarea{transition:border-color .22s ease,box-shadow .22s ease,transform .22s ease}
+input:focus,select:focus,textarea:focus{border-color:#ff6a00!important;box-shadow:0 0 0 4px rgba(255,106,0,.12);transform:translateY(-2px)}
+.badge{box-shadow:inset 0 0 16px rgba(255,106,0,.12);animation:badgeGlow 3s ease-in-out infinite}
+@keyframes badgeGlow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.18)}}
+.event{transition:.25s ease}
+.event:hover{transform:translateX(4px) scale(1.02);background:rgba(255,106,0,.25)}
+.cards{perspective:1200px}
+.card:nth-child(odd){animation:cardFloatA 6s ease-in-out infinite}
+.card:nth-child(even){animation:cardFloatB 7s ease-in-out infinite}
+@keyframes cardFloatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes cardFloatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+
+.ethno,
+.brand-title,
+.main-title,
+.logo-now,
+.menu button{
+  font-family:'Ethnocentric', Arial, Helvetica, sans-serif!important;
+  letter-spacing:1px;
+}
+.logo-now{
+  color:#ff6a00;
+  text-shadow:0 0 24px rgba(255,106,0,.45);
+}
+
 @media(max-width:900px){.sidebar{position:relative;width:100%;height:auto}.main{margin-left:0}.calendar{grid-template-columns:1fr 1fr}body{display:block}}
 </style>
 </head>
@@ -57,7 +113,11 @@ textarea{min-height:90px;resize:vertical}.form-grid{display:grid;grid-template-c
 
 <aside class="sidebar">
 <img src="assets/now-logo.png" class="logo" alt="NOW Logo">
-<h2>NOW CRM</h2>
+<h2 class="brand-title ethno">
+<span class="brand-orange logo-now">NOW</span>
+<span class="brand-white">Agency</span>
+<span class="brand-white">CRM</span>
+</h2>
 <div class="menu">
 <button class="active" onclick="showSection('dashboard',this)">Dashboard</button>
 <button onclick="showSection('clientes',this)">Clientes</button>
@@ -74,7 +134,11 @@ textarea{min-height:90px;resize:vertical}.form-grid{display:grid;grid-template-c
 <main class="main">
 
 <section id="dashboard" class="section active">
-<h1>NOW Agency CRM</h1><div class="subtitle">Panel principal de gestión</div>
+<h1 class="main-title ethno">
+<span class="brand-orange logo-now">NOW</span>
+<span class="brand-white">Agency</span>
+<span class="brand-white">CRM</span>
+</h1><div class="subtitle">Panel principal de gestión</div>
 <div class="cards">
 <div class="card"><h3 id="countClientes">0</h3><p>Clientes cargados</p></div>
 <div class="card"><h3 id="countFacturas">0€</h3><p>Total facturado con IGIC</p></div>
@@ -95,6 +159,7 @@ textarea{min-height:90px;resize:vertical}.form-grid{display:grid;grid-template-c
 <input id="clienteTelefono" placeholder="Teléfono encargado">
 <input id="clienteEmail" placeholder="Email encargado">
 <input id="clienteEmpresa" placeholder="Nombre empresa">
+<input id="clienteDireccionEmpresa" placeholder="Dirección empresa">
 <input id="clienteCif" placeholder="CIF">
 <input id="clienteTelefonoEmpresa" placeholder="Teléfono empresa">
 <input id="clienteEmailEmpresa" placeholder="Email empresa">
@@ -106,7 +171,7 @@ textarea{min-height:90px;resize:vertical}.form-grid{display:grid;grid-template-c
 </div>
 <button class="save" onclick="guardarCliente()">Guardar cliente</button>
 </div>
-<table class="table"><thead><tr><th>Encargado</th><th>Contacto</th><th>Empresa</th><th>CIF</th><th>Email empresa</th><th>Pack</th><th>Estado</th><th>Notas</th><th></th></tr></thead><tbody id="clientesTabla"></tbody></table>
+<table class="table"><thead><tr><th>Encargado</th><th>Contacto</th><th>Empresa</th><th>Dirección</th><th>CIF</th><th>Email empresa</th><th>Pack</th><th>Estado</th><th>Notas</th><th></th></tr></thead><tbody id="clientesTabla"></tbody></table>
 </section>
 
 <section id="facturacion" class="section">
@@ -318,7 +383,7 @@ function del(type,i){db[type].splice(i,1);save();}
 function euro(v){return Number(v||0).toFixed(2)+'€';}
 function pass(v){return v ? '••••••' : '-';}
 
-function guardarCliente(){db.clientes.push({encargado:clienteEncargado.value,telefono:clienteTelefono.value,email:clienteEmail.value,empresa:clienteEmpresa.value,cif:clienteCif.value,telefonoEmpresa:clienteTelefonoEmpresa.value,emailEmpresa:clienteEmailEmpresa.value,pack:clientePack.value,estado:clienteEstado.value,notas:clienteNotas.value});save();clienteForm.classList.remove('active');}
+function guardarCliente(){db.clientes.push({encargado:clienteEncargado.value,telefono:clienteTelefono.value,email:clienteEmail.value,empresa:clienteEmpresa.value,direccionEmpresa:clienteDireccionEmpresa.value,cif:clienteCif.value,telefonoEmpresa:clienteTelefonoEmpresa.value,emailEmpresa:clienteEmailEmpresa.value,pack:clientePack.value,estado:clienteEstado.value,notas:clienteNotas.value});save();clienteForm.classList.remove('active');}
 function guardarFactura(){let base=Number(facturaBase.value||0), igicPct=Number(facturaIgic.value||0), igic=base*igicPct/100,total=base+igic;db.facturas.push({numero:facturaNumero.value,tipo:facturaTipo.value,cliente:facturaCliente.value,concepto:facturaConcepto.value,base,igicPct,igic,total,estado:facturaEstado.value});save();facturaForm.classList.remove('active');}
 function guardarGasto(){let base=Number(gastoBase.value||0), igicPct=Number(gastoIgic.value||0), igic=base*igicPct/100,total=base+igic;db.gastos.push({fecha:gastoFecha.value,proveedor:gastoProveedor.value,concepto:gastoConcepto.value,categoria:gastoCategoria.value,base,igicPct,igic,total,metodo:gastoMetodo.value,deducible:gastoDeducible.value,notas:gastoNotas.value});save();gastoForm.classList.remove('active');}
 function guardarProduccion(){db.produccion.push({proyecto:prodProyecto.value,cliente:prodCliente.value,fecha:prodFecha.value,estado:prodEstado.value,notas:prodNotas.value});save();produccionForm.classList.remove('active');}
@@ -341,7 +406,7 @@ if(window.finGastos) finGastos.innerText=euro(totalGastos);
 if(window.finBalance) finBalance.innerText=euro(totalIngresos-totalGastos);
 if(window.finIgic) finIgic.innerText=euro(totalIgic);
 
-clientesTabla.innerHTML=db.clientes.map((r,i)=>`<tr><td>${r.encargado||''}<br><span class="small">${r.telefono||''}<br>${r.email||''}</span></td><td>${r.empresa||''}</td><td>${r.cif||''}</td><td>${r.emailEmpresa||''}<br><span class="small">${r.telefonoEmpresa||''}</span></td><td><span class="badge">${r.pack||''}</span></td><td><span class="badge">${r.estado||''}</span></td><td>${r.notas||''}</td><td><button class="danger" onclick="del('clientes',${i})">Borrar</button></td></tr>`).join('');
+clientesTabla.innerHTML=db.clientes.map((r,i)=>`<tr><td>${r.encargado||''}<br><span class="small">${r.telefono||''}<br>${r.email||''}</span></td><td>${r.empresa||''}</td><td>${r.direccionEmpresa||''}</td><td>${r.cif||''}</td><td>${r.emailEmpresa||''}<br><span class="small">${r.telefonoEmpresa||''}</span></td><td><span class="badge">${r.pack||''}</span></td><td><span class="badge">${r.estado||''}</span></td><td>${r.notas||''}</td><td><button class="danger" onclick="del('clientes',${i})">Borrar</button></td></tr>`).join('');
 
 facturasTabla.innerHTML=db.facturas.map((r,i)=>`<tr><td>${r.numero||''}</td><td>${r.tipo||''}</td><td>${r.cliente||''}</td><td>${r.concepto||''}</td><td>${euro(r.base)}</td><td>${r.igicPct}%<br>${euro(r.igic)}</td><td>${euro(r.total)}</td><td><span class="badge">${r.estado||''}</span></td><td><button class="danger" onclick="del('facturas',${i})">Borrar</button></td></tr>`).join('');
 
@@ -487,6 +552,24 @@ agendaTitulo.focus();
 }
 
 function borrarTodo(){if(confirm('¿Borrar todos los datos del CRM?')){localStorage.clear();location.reload();}}
+
+
+document.addEventListener('mousemove', (e)=>{
+  const cards=document.querySelectorAll('.card:hover,.form-card:hover,.finance-kpi:hover,.chart-box:hover,.agenda-panel:hover');
+  cards.forEach(card=>{
+    const rect=card.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    const y=e.clientY-rect.top;
+    const rx=((y/rect.height)-0.5)*-8;
+    const ry=((x/rect.width)-0.5)*8;
+    card.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
+  });
+});
+document.addEventListener('mouseout', ()=>{
+  document.querySelectorAll('.card,.form-card,.finance-kpi,.chart-box,.agenda-panel').forEach(card=>{
+    card.style.transform='';
+  });
+});
 
 setupCalendar();
 render();
