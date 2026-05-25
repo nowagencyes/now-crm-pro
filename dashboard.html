@@ -3,147 +3,493 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOW CRM Dashboard</title>
-
+<title>NOW CRM PRO Dashboard</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{background:#070707;color:#fff;min-height:100vh;display:flex}
-.sidebar{width:270px;background:#111;border-right:1px solid #2a2a2a;padding:28px 20px}
+.sidebar{width:280px;background:#111;border-right:1px solid #2a2a2a;padding:28px 20px;position:fixed;left:0;top:0;bottom:0;overflow:auto}
 .logo{width:115px;height:115px;object-fit:contain;display:block;margin:0 auto 22px}
 .sidebar h2{text-align:center;color:#ff6a00;font-size:30px;margin-bottom:28px}
 .menu{display:flex;flex-direction:column;gap:12px}
 .menu button{padding:15px;border:0;border-radius:14px;background:#2a2a2a;color:#fff;font-weight:bold;cursor:pointer}
 .menu button:hover,.menu button.active{background:#ff6a00}
-.main{flex:1;padding:45px;background:radial-gradient(circle at top right,rgba(255,106,0,.23),transparent 35%),#090909}
-.section{display:none}
-.section.active{display:block}
-h1{font-size:50px;color:#ff6a00;margin-bottom:8px}
-.subtitle{color:#bbb;margin-bottom:35px;font-size:18px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
-.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:26px;min-height:140px}
-.card h3{color:#ff8c2b;font-size:24px;margin-bottom:10px}
-.card p{color:#ddd;line-height:1.4}
-.table{width:100%;border-collapse:collapse;margin-top:20px;background:#111;border-radius:18px;overflow:hidden}
-.table th,.table td{padding:16px;border-bottom:1px solid #252525;text-align:left}
-.table th{color:#ff8c2b;background:#151515}
-.top-actions{margin-bottom:25px}
-.add{background:#ff6a00;color:white;border:0;border-radius:14px;padding:14px 20px;font-weight:bold;cursor:pointer}
+.main{margin-left:280px;flex:1;padding:45px;background:radial-gradient(circle at top right,rgba(255,106,0,.23),transparent 35%),#090909;min-height:100vh}
+.section{display:none}.section.active{display:block}
+h1{font-size:46px;color:#ff6a00;margin-bottom:8px}.subtitle{color:#bbb;margin-bottom:28px;font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:24px;min-height:120px}
+.card h3{color:#ff8c2b;font-size:22px;margin-bottom:10px}.card p{color:#ddd;line-height:1.4}
+.top-actions{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}.add,.save,.danger,.secondary{background:#ff6a00;color:white;border:0;border-radius:14px;padding:13px 18px;font-weight:bold;cursor:pointer}.danger{background:#c0392b}.secondary{background:#333}
+.table{width:100%;border-collapse:collapse;margin-top:15px;background:#111;border-radius:18px;overflow:hidden}.table th,.table td{padding:14px;border-bottom:1px solid #252525;text-align:left;vertical-align:top}.table th{color:#ff8c2b;background:#151515}
+input,select,textarea{width:100%;padding:13px;border-radius:12px;border:1px solid #333;background:#171717;color:white;font-size:15px}
+textarea{min-height:90px;resize:vertical}.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:20px 0}.form-card{background:#111;border:1px solid #252525;border-radius:18px;padding:20px;margin-bottom:20px;display:none}.form-card.active{display:block}
+.badge{padding:6px 9px;border-radius:999px;background:rgba(255,106,0,.15);color:#ff8c2b;font-weight:bold;font-size:12px;display:inline-block}
+.calendar-controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:center}.calendar-controls select{max-width:180px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.day{background:#111;border:1px solid #252525;min-height:135px;border-radius:16px;padding:10px;cursor:pointer}.day:hover{border-color:#ff6a00}.day strong{color:#ff6a00}.event{margin-top:8px;background:rgba(255,106,0,.15);padding:7px;border-radius:8px;font-size:12px;color:#ffd1a8}
+.small{font-size:12px;color:#aaa}.whatsapp{color:#25d366;font-weight:bold}.hidden-pass{font-family:monospace}
+
+.agenda-panel{background:#111;border:1px solid #252525;border-radius:18px;padding:20px;margin-bottom:20px}
+.agenda-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:15px}
+.agenda-title{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.day.selected{border-color:#ff6a00;box-shadow:0 0 0 2px rgba(255,106,0,.25)}
+.task-row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;background:#171717;border:1px solid #292929;border-radius:12px;padding:12px;margin-top:10px}
+.task-row strong{color:#ff8c2b}
+.priority-alta{color:#ff4d4d}.priority-media{color:#ffd166}.priority-baja{color:#25d366}
+
+
+.finance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-bottom:22px}
+.finance-kpi{background:#111;border:1px solid #252525;border-radius:18px;padding:20px}
+.finance-kpi span{color:#aaa;font-size:13px}.finance-kpi strong{display:block;color:#ff8c2b;font-size:30px;margin-top:8px}
+.chart-box{background:#111;border:1px solid #252525;border-radius:18px;padding:20px;margin-top:20px}
+.bar-row{display:flex;align-items:center;gap:12px;margin:12px 0}
+.bar-label{width:120px;color:#ddd;font-size:13px}
+.bar-track{flex:1;height:24px;background:#252525;border-radius:999px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,#ff6a00,#ff8c2b);border-radius:999px;min-width:4px}
+.bar-value{width:90px;text-align:right;color:#ff8c2b;font-weight:bold;font-size:13px}
+.pie-wrap{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.pie{width:180px;height:180px;border-radius:50%;background:conic-gradient(#ff6a00 0deg,#ff6a00 120deg,#333 120deg,#333 360deg)}
+.legend-list{display:flex;flex-direction:column;gap:10px}
+.legend-item{color:#ddd}.legend-color{display:inline-block;width:14px;height:14px;border-radius:4px;background:#ff6a00;margin-right:8px}
+
+@media(max-width:900px){.sidebar{position:relative;width:100%;height:auto}.main{margin-left:0}.calendar{grid-template-columns:1fr 1fr}body{display:block}}
 </style>
 </head>
-
 <body>
 
 <aside class="sidebar">
-  <img src="assets/now-logo.png" class="logo" alt="NOW Logo">
-  <h2>NOW CRM</h2>
-
-  <div class="menu">
-    <button class="active" onclick="showSection('dashboard',this)">Dashboard</button>
-    <button onclick="showSection('clientes',this)">Clientes</button>
-    <button onclick="showSection('facturacion',this)">Facturación</button>
-    <button onclick="showSection('produccion',this)">Producción</button>
-    <button onclick="showSection('calendario',this)">Calendario</button>
-    <button onclick="showSection('redes',this)">Redes Sociales</button>
-    <button onclick="showSection('planner',this)">Planner</button>
-    <button onclick="showSection('config',this)">Configuración</button>
-  </div>
+<img src="assets/now-logo.png" class="logo" alt="NOW Logo">
+<h2>NOW CRM</h2>
+<div class="menu">
+<button class="active" onclick="showSection('dashboard',this)">Dashboard</button>
+<button onclick="showSection('clientes',this)">Clientes</button>
+<button onclick="showSection('facturacion',this)">Facturación</button>
+<button onclick="showSection('finanzas',this)">Finanzas</button>
+<button onclick="showSection('produccion',this)">Producción</button>
+<button onclick="showSection('calendario',this)">Calendario</button>
+<button onclick="showSection('redes',this)">Redes Sociales</button>
+<button onclick="showSection('planner',this)">Planner</button>
+<button onclick="showSection('config',this)">Configuración</button>
+</div>
 </aside>
 
 <main class="main">
 
-  <section id="dashboard" class="section active">
-    <h1>NOW Agency CRM</h1>
-    <div class="subtitle">Panel principal de gestión</div>
+<section id="dashboard" class="section active">
+<h1>NOW Agency CRM</h1><div class="subtitle">Panel principal de gestión</div>
+<div class="cards">
+<div class="card"><h3 id="countClientes">0</h3><p>Clientes cargados</p></div>
+<div class="card"><h3 id="countFacturas">0€</h3><p>Total facturado con IGIC</p></div>
+<div class="card"><h3 id="countPlanner">0</h3><p>Publicaciones planificadas</p></div>
+<div class="card"><h3 id="countTareas">0</h3><p>Tareas en calendario</p></div>
+<div class="card"><h3 id="countProduccion">0</h3><p>Producciones activas</p></div>
+<div class="card"><h3 id="countGastos">0€</h3><p>Total gastos</p></div>
+<div class="card"><h3 id="countBalance">0€</h3><p>Balance neto</p></div>
+</div>
+</section>
 
-    <div class="cards">
-      <div class="card"><h3>Clientes</h3><p>Gestión de clientes, contactos y accesos.</p></div>
-      <div class="card"><h3>Facturación</h3><p>Facturas, proformas, pagos e IGIC.</p></div>
-      <div class="card"><h3>Planner</h3><p>Calendario de publicaciones tipo Metricool.</p></div>
-      <div class="card"><h3>Producción</h3><p>Rodajes, shootings, edición y entregas.</p></div>
-      <div class="card"><h3>Redes Sociales</h3><p>Instagram, TikTok, Facebook y contenido.</p></div>
-      <div class="card"><h3>Google Calendar</h3><p>Reuniones, vencimientos y eventos.</p></div>
-    </div>
-  </section>
+<section id="clientes" class="section">
+<h1>Clientes</h1><div class="subtitle">Contacto, empresa y pack contratado</div>
+<div class="top-actions"><button class="add" onclick="toggleForm('clienteForm')">+ Nuevo cliente</button></div>
+<div class="form-card" id="clienteForm">
+<div class="form-grid">
+<input id="clienteEncargado" placeholder="Nombre encargado">
+<input id="clienteTelefono" placeholder="Teléfono encargado">
+<input id="clienteEmail" placeholder="Email encargado">
+<input id="clienteEmpresa" placeholder="Nombre empresa">
+<input id="clienteCif" placeholder="CIF">
+<input id="clienteTelefonoEmpresa" placeholder="Teléfono empresa">
+<input id="clienteEmailEmpresa" placeholder="Email empresa">
+<select id="clientePack">
+<option>Básico</option><option>Intermedio</option><option>Pro</option><option>Premium</option><option>Pack Básico Video</option><option>Pack 3 Videos</option>
+</select>
+<select id="clienteEstado"><option>Activo</option><option>Potencial</option><option>Pausado</option><option>Finalizado</option></select>
+<textarea id="clienteNotas" placeholder="Notas del cliente"></textarea>
+</div>
+<button class="save" onclick="guardarCliente()">Guardar cliente</button>
+</div>
+<table class="table"><thead><tr><th>Encargado</th><th>Contacto</th><th>Empresa</th><th>CIF</th><th>Email empresa</th><th>Pack</th><th>Estado</th><th>Notas</th><th></th></tr></thead><tbody id="clientesTabla"></tbody></table>
+</section>
 
-  <section id="clientes" class="section">
-    <h1>Clientes</h1>
-    <div class="subtitle">Base de datos de clientes NOW Agency</div>
-    <div class="top-actions"><button class="add">+ Nuevo cliente</button></div>
-    <table class="table">
-      <tr><th>Cliente</th><th>Empresa</th><th>Email</th><th>Servicio</th><th>Estado</th></tr>
-      <tr><td>Sin datos</td><td>-</td><td>-</td><td>-</td><td>Pendiente</td></tr>
-    </table>
-  </section>
+<section id="facturacion" class="section">
+<h1>Facturación</h1><div class="subtitle">Proformas, facturas, base imponible e IGIC</div>
+<div class="top-actions"><button class="add" onclick="toggleForm('facturaForm')">+ Nueva factura</button></div>
+<div class="form-card" id="facturaForm">
+<div class="form-grid">
+<input id="facturaNumero" placeholder="Nº factura / proforma">
+<select id="facturaTipo"><option>Proforma</option><option>Factura</option></select>
+<input id="facturaCliente" placeholder="Cliente">
+<input id="facturaConcepto" placeholder="Concepto">
+<input id="facturaBase" type="number" placeholder="Base imponible €">
+<input id="facturaIgic" type="number" value="7" placeholder="IGIC %">
+<select id="facturaEstado"><option>Pendiente</option><option>Pagada</option><option>Vencida</option><option>Anulada</option></select>
+</div>
+<button class="save" onclick="guardarFactura()">Guardar factura</button>
+</div>
+<table class="table"><thead><tr><th>Nº</th><th>Tipo</th><th>Cliente</th><th>Concepto</th><th>Base</th><th>IGIC</th><th>Total</th><th>Estado</th><th></th></tr></thead><tbody id="facturasTabla"></tbody></table>
+</section>
 
-  <section id="facturacion" class="section">
-    <h1>Facturación</h1>
-    <div class="subtitle">Facturas y proformas</div>
-    <div class="cards">
-      <div class="card"><h3>Proformas</h3><p>Crear presupuestos y proformas.</p></div>
-      <div class="card"><h3>Facturas</h3><p>Control de facturación.</p></div>
-      <div class="card"><h3>Pagos</h3><p>Estado de pagos pendientes.</p></div>
-    </div>
-  </section>
 
-  <section id="produccion" class="section">
-    <h1>Producción</h1>
-    <div class="subtitle">Rodajes, fotos, videos y entregas</div>
-    <div class="cards">
-      <div class="card"><h3>Briefing</h3><p>Ideas y planificación.</p></div>
-      <div class="card"><h3>Grabación</h3><p>Producciones activas.</p></div>
-      <div class="card"><h3>Edición</h3><p>Contenido en postproducción.</p></div>
-    </div>
-  </section>
+<section id="finanzas" class="section">
+<h1>Finanzas</h1><div class="subtitle">Control de ingresos, gastos, IGIC y balance de NOW Agency</div>
 
-  <section id="calendario" class="section">
-    <h1>Calendario</h1>
-    <div class="subtitle">Eventos, reuniones y entregas</div>
-    <div class="cards">
-      <div class="card"><h3>Hoy</h3><p>Sin eventos programados.</p></div>
-      <div class="card"><h3>Esta semana</h3><p>Sin eventos programados.</p></div>
-    </div>
-  </section>
+<div class="finance-grid">
+  <div class="finance-kpi"><span>Ingresos facturados</span><strong id="finIngresos">0€</strong></div>
+  <div class="finance-kpi"><span>Gastos totales</span><strong id="finGastos">0€</strong></div>
+  <div class="finance-kpi"><span>Balance neto</span><strong id="finBalance">0€</strong></div>
+  <div class="finance-kpi"><span>IGIC facturado</span><strong id="finIgic">0€</strong></div>
+</div>
 
-  <section id="redes" class="section">
-    <h1>Redes Sociales</h1>
-    <div class="subtitle">Gestión de cuentas y contenido</div>
-    <div class="cards">
-      <div class="card"><h3>Instagram</h3><p>Usuarios, contenido y estado.</p></div>
-      <div class="card"><h3>TikTok</h3><p>Ideas, vídeos y programación.</p></div>
-      <div class="card"><h3>Facebook</h3><p>Páginas y campañas.</p></div>
-    </div>
-  </section>
+<div class="top-actions"><button class="add" onclick="toggleForm('gastoForm')">+ Nuevo gasto</button></div>
 
-  <section id="planner" class="section">
-    <h1>Planner</h1>
-    <div class="subtitle">Calendario de publicaciones tipo Metricool</div>
-    <div class="cards">
-      <div class="card"><h3>Idea</h3><p>Contenido pendiente de desarrollar.</p></div>
-      <div class="card"><h3>Aprobación</h3><p>Contenido pendiente del cliente.</p></div>
-      <div class="card"><h3>Programado</h3><p>Publicaciones listas.</p></div>
-      <div class="card"><h3>Publicado</h3><p>Contenido ya publicado.</p></div>
-    </div>
-  </section>
+<div class="form-card" id="gastoForm">
+<div class="form-grid">
+<input id="gastoFecha" type="date">
+<input id="gastoProveedor" placeholder="Proveedor">
+<input id="gastoConcepto" placeholder="Concepto del gasto">
+<select id="gastoCategoria">
+<option>Software</option>
+<option>Publicidad</option>
+<option>Producción</option>
+<option>Transporte</option>
+<option>Material</option>
+<option>Teléfono / Internet</option>
+<option>Comisiones</option>
+<option>Impuestos</option>
+<option>Otros</option>
+</select>
+<input id="gastoBase" type="number" placeholder="Base €">
+<input id="gastoIgic" type="number" value="7" placeholder="IGIC/IVA %">
+<select id="gastoMetodo"><option>Tarjeta</option><option>Transferencia</option><option>Efectivo</option><option>Bizum</option><option>Otro</option></select>
+<select id="gastoDeducible"><option>Sí</option><option>No</option><option>Consultar</option></select>
+<textarea id="gastoNotas" placeholder="Notas / Nº factura / enlace recibo"></textarea>
+</div>
+<button class="save" onclick="guardarGasto()">Guardar gasto</button>
+</div>
 
-  <section id="config" class="section">
-    <h1>Configuración</h1>
-    <div class="subtitle">Ajustes del CRM</div>
-    <div class="cards">
-      <div class="card"><h3>Usuarios</h3><p>facunow / panchonow</p></div>
-      <div class="card"><h3>Estado</h3><p>CRM local activo.</p></div>
-    </div>
-  </section>
+<table class="table"><thead><tr><th>Fecha</th><th>Proveedor</th><th>Concepto</th><th>Categoría</th><th>Base</th><th>IGIC/IVA</th><th>Total</th><th>Deducible</th><th></th></tr></thead><tbody id="gastosTabla"></tbody></table>
+
+<div class="chart-box">
+<h3 style="color:#ff8c2b;margin-bottom:15px">Gráfico ingresos vs gastos</h3>
+<div id="chartBalance"></div>
+</div>
+
+<div class="chart-box">
+<h3 style="color:#ff8c2b;margin-bottom:15px">Gastos por categoría</h3>
+<div id="chartCategorias"></div>
+</div>
+
+</section>
+
+<section id="produccion" class="section">
+<h1>Producción</h1><div class="subtitle">Rodajes, shootings y entregas</div>
+<div class="top-actions"><button class="add" onclick="toggleForm('produccionForm')">+ Nueva producción</button></div>
+<div class="form-card" id="produccionForm">
+<div class="form-grid">
+<input id="prodProyecto" placeholder="Proyecto">
+<input id="prodCliente" placeholder="Cliente">
+<input id="prodFecha" type="date">
+<select id="prodEstado"><option>Briefing</option><option>Planificado</option><option>Grabando</option><option>Editando</option><option>Entregado</option></select>
+<textarea id="prodNotas" placeholder="Notas"></textarea>
+</div>
+<button class="save" onclick="guardarProduccion()">Guardar producción</button>
+</div>
+<table class="table"><thead><tr><th>Proyecto</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th>Notas</th><th></th></tr></thead><tbody id="produccionTabla"></tbody></table>
+</section>
+
+<section id="calendario" class="section">
+<h1>Calendario / Agenda</h1>
+<div class="subtitle">Agenda mensual desde 2026 hasta 2040. Selecciona un día y carga tus tareas.</div>
+
+<div class="calendar-controls">
+<select id="calendarMonth" onchange="renderCalendar()"></select>
+<select id="calendarYear" onchange="renderCalendar()"></select>
+<button class="secondary" onclick="hoy()">Mes actual</button>
+<span class="whatsapp">WhatsApp recordatorio: +34 666962212</span>
+</div>
+
+<div class="agenda-panel">
+  <div class="agenda-title">
+    <h3 id="selectedDateTitle">Selecciona un día del calendario</h3>
+    <button class="secondary" onclick="limpiarAgendaForm()">Limpiar campos</button>
+  </div>
+
+  <div class="agenda-form">
+    <input id="agendaFecha" type="date">
+    <input id="agendaHora" type="time">
+    <input id="agendaCliente" placeholder="Cliente / proyecto">
+    <select id="agendaTipo">
+      <option>Tarea</option>
+      <option>Reunión</option>
+      <option>Rodaje</option>
+      <option>Entrega</option>
+      <option>Publicación</option>
+      <option>Pago</option>
+    </select>
+    <select id="agendaPrioridad">
+      <option>Media</option>
+      <option>Alta</option>
+      <option>Baja</option>
+    </select>
+    <input id="agendaTitulo" placeholder="Qué tengo que hacer">
+    <textarea id="agendaNotas" placeholder="Notas de la tarea"></textarea>
+  </div>
+
+  <div class="top-actions" style="margin-top:15px">
+    <button class="save" onclick="guardarTareaAgenda()">Guardar tarea</button>
+    <button class="secondary" onclick="enviarAgendaWhatsApp()">Enviar tarea seleccionada por WhatsApp</button>
+  </div>
+
+  <div id="agendaLista"></div>
+</div>
+
+<div class="calendar" id="calendarGrid"></div>
+<p class="small" style="margin-top:15px">Nota: ahora el calendario funciona como agenda. WhatsApp abre el mensaje listo para enviar; para envío automático hace falta API oficial.</p>
+</section>
+
+<section id="redes" class="section">
+<h1>Redes Sociales</h1><div class="subtitle">Usuarios, passwords y notas internas</div>
+<div class="top-actions"><button class="add" onclick="toggleForm('redForm')">+ Nuevo acceso</button></div>
+<div class="form-card" id="redForm">
+<div class="form-grid">
+<input id="redCliente" placeholder="Cliente">
+<input id="redInstagram" placeholder="Instagram usuario">
+<input id="redInstagramPass" placeholder="Instagram password">
+<input id="redTiktok" placeholder="TikTok usuario">
+<input id="redTiktokPass" placeholder="TikTok password">
+<input id="redFacebook" placeholder="Facebook usuario">
+<input id="redFacebookPass" placeholder="Facebook password">
+<input id="redGoogle" placeholder="Google Business email">
+<input id="redGooglePass" placeholder="Google Business password">
+<textarea id="redNotas" placeholder="Notas"></textarea>
+</div>
+<button class="save" onclick="guardarRed()">Guardar acceso</button>
+</div>
+<table class="table"><thead><tr><th>Cliente</th><th>Instagram</th><th>TikTok</th><th>Facebook</th><th>Google Business</th><th>Notas</th><th></th></tr></thead><tbody id="redesTabla"></tbody></table>
+</section>
+
+<section id="planner" class="section">
+<h1>Planner</h1><div class="subtitle">Planificación de historias, videos, posts e imágenes</div>
+<div class="top-actions"><button class="add" onclick="toggleForm('plannerForm')">+ Nueva publicación</button></div>
+<div class="form-card" id="plannerForm">
+<div class="form-grid">
+<input id="planProyecto" placeholder="Proyecto / campaña">
+<input id="planFecha" type="date">
+<input id="planHora" type="time">
+<input id="planCliente" placeholder="Cliente">
+<select id="planRed"><option>Instagram</option><option>TikTok</option><option>Facebook</option><option>LinkedIn</option><option>Google Business</option></select>
+<select id="planTipo"><option>Historia</option><option>Video</option><option>Post imagen</option><option>Reel</option><option>Carrusel</option></select>
+<select id="planEstado"><option>Idea</option><option>Diseño</option><option>Aprobación</option><option>Programado</option><option>Publicado</option></select>
+<textarea id="planCaption" placeholder="Caption / Copy"></textarea>
+<textarea id="planHashtags" placeholder="Hashtags"></textarea>
+<textarea id="planArchivos" placeholder="Lugar para imágenes/videos: pega nombre de archivo, link Drive o notas del material"></textarea>
+</div>
+<button class="save" onclick="guardarPlanner()">Guardar publicación</button>
+</div>
+<table class="table"><thead><tr><th>Proyecto</th><th>Fecha</th><th>Hora</th><th>Cliente</th><th>Red</th><th>Tipo</th><th>Estado</th><th>Material</th><th></th></tr></thead><tbody id="plannerTabla"></tbody></table>
+</section>
+
+<section id="config" class="section">
+<h1>Configuración</h1><div class="subtitle">Ajustes del CRM</div>
+<div class="cards">
+<div class="card"><h3>Usuarios</h3><p>facunow / panchonow</p></div>
+<div class="card"><h3>Estado</h3><p>CRM local activo con guardado en navegador.</p></div>
+<div class="card"><h3>WhatsApp</h3><p>Recordatorios preparados para +34 666962212.</p></div>
+<div class="card"><h3>Backup</h3><p><button class="danger" onclick="borrarTodo()">Borrar todos los datos</button></p></div>
+</div>
+</section>
 
 </main>
 
 <script>
-function showSection(id, btn){
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-</script>
+const WHATSAPP_PHONE='34666962212';
+const db = {
+ clientes: JSON.parse(localStorage.getItem('now_clientes') || '[]'),
+ facturas: JSON.parse(localStorage.getItem('now_facturas') || '[]'),
+ produccion: JSON.parse(localStorage.getItem('now_produccion') || '[]'),
+ redes: JSON.parse(localStorage.getItem('now_redes') || '[]'),
+ planner: JSON.parse(localStorage.getItem('now_planner') || '[]'),
+ gastos: JSON.parse(localStorage.getItem('now_gastos') || '[]'),
+ tareas: JSON.parse(localStorage.getItem('now_tareas') || '[]')
+};
 
+function save(){for(const k in db)localStorage.setItem('now_'+k,JSON.stringify(db[k]));render();}
+function showSection(id, btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+function toggleForm(id){document.getElementById(id).classList.toggle('active');}
+function del(type,i){db[type].splice(i,1);save();}
+function euro(v){return Number(v||0).toFixed(2)+'€';}
+function pass(v){return v ? '••••••' : '-';}
+
+function guardarCliente(){db.clientes.push({encargado:clienteEncargado.value,telefono:clienteTelefono.value,email:clienteEmail.value,empresa:clienteEmpresa.value,cif:clienteCif.value,telefonoEmpresa:clienteTelefonoEmpresa.value,emailEmpresa:clienteEmailEmpresa.value,pack:clientePack.value,estado:clienteEstado.value,notas:clienteNotas.value});save();clienteForm.classList.remove('active');}
+function guardarFactura(){let base=Number(facturaBase.value||0), igicPct=Number(facturaIgic.value||0), igic=base*igicPct/100,total=base+igic;db.facturas.push({numero:facturaNumero.value,tipo:facturaTipo.value,cliente:facturaCliente.value,concepto:facturaConcepto.value,base,igicPct,igic,total,estado:facturaEstado.value});save();facturaForm.classList.remove('active');}
+function guardarGasto(){let base=Number(gastoBase.value||0), igicPct=Number(gastoIgic.value||0), igic=base*igicPct/100,total=base+igic;db.gastos.push({fecha:gastoFecha.value,proveedor:gastoProveedor.value,concepto:gastoConcepto.value,categoria:gastoCategoria.value,base,igicPct,igic,total,metodo:gastoMetodo.value,deducible:gastoDeducible.value,notas:gastoNotas.value});save();gastoForm.classList.remove('active');}
+function guardarProduccion(){db.produccion.push({proyecto:prodProyecto.value,cliente:prodCliente.value,fecha:prodFecha.value,estado:prodEstado.value,notas:prodNotas.value});save();produccionForm.classList.remove('active');}
+function guardarRed(){db.redes.push({cliente:redCliente.value,instagram:redInstagram.value,instagramPass:redInstagramPass.value,tiktok:redTiktok.value,tiktokPass:redTiktokPass.value,facebook:redFacebook.value,facebookPass:redFacebookPass.value,google:redGoogle.value,googlePass:redGooglePass.value,notas:redNotas.value});save();redForm.classList.remove('active');}
+function guardarPlanner(){db.planner.push({proyecto:planProyecto.value,fecha:planFecha.value,hora:planHora.value,cliente:planCliente.value,red:planRed.value,tipo:planTipo.value,estado:planEstado.value,caption:planCaption.value,hashtags:planHashtags.value,archivos:planArchivos.value});save();plannerForm.classList.remove('active');}
+
+function render(){
+const totalIngresos=db.facturas.reduce((a,b)=>a+Number(b.total||0),0);
+const totalGastos=db.gastos.reduce((a,b)=>a+Number(b.total||0),0);
+const totalIgic=db.facturas.reduce((a,b)=>a+Number(b.igic||0),0);
+countClientes.innerText=db.clientes.length;
+countFacturas.innerText=euro(totalIngresos);
+countPlanner.innerText=db.planner.length;
+countProduccion.innerText=db.produccion.length;
+countTareas.innerText=db.tareas.length;
+if(window.countGastos) countGastos.innerText=euro(totalGastos);
+if(window.countBalance) countBalance.innerText=euro(totalIngresos-totalGastos);
+if(window.finIngresos) finIngresos.innerText=euro(totalIngresos);
+if(window.finGastos) finGastos.innerText=euro(totalGastos);
+if(window.finBalance) finBalance.innerText=euro(totalIngresos-totalGastos);
+if(window.finIgic) finIgic.innerText=euro(totalIgic);
+
+clientesTabla.innerHTML=db.clientes.map((r,i)=>`<tr><td>${r.encargado||''}<br><span class="small">${r.telefono||''}<br>${r.email||''}</span></td><td>${r.empresa||''}</td><td>${r.cif||''}</td><td>${r.emailEmpresa||''}<br><span class="small">${r.telefonoEmpresa||''}</span></td><td><span class="badge">${r.pack||''}</span></td><td><span class="badge">${r.estado||''}</span></td><td>${r.notas||''}</td><td><button class="danger" onclick="del('clientes',${i})">Borrar</button></td></tr>`).join('');
+
+facturasTabla.innerHTML=db.facturas.map((r,i)=>`<tr><td>${r.numero||''}</td><td>${r.tipo||''}</td><td>${r.cliente||''}</td><td>${r.concepto||''}</td><td>${euro(r.base)}</td><td>${r.igicPct}%<br>${euro(r.igic)}</td><td>${euro(r.total)}</td><td><span class="badge">${r.estado||''}</span></td><td><button class="danger" onclick="del('facturas',${i})">Borrar</button></td></tr>`).join('');
+
+if(window.gastosTabla){
+gastosTabla.innerHTML=db.gastos.map((r,i)=>`<tr><td>${r.fecha||''}</td><td>${r.proveedor||''}</td><td>${r.concepto||''}</td><td><span class="badge">${r.categoria||''}</span></td><td>${euro(r.base)}</td><td>${r.igicPct}%<br>${euro(r.igic)}</td><td>${euro(r.total)}</td><td>${r.deducible||''}</td><td><button class="danger" onclick="del('gastos',${i})">Borrar</button></td></tr>`).join('');
+renderFinanceCharts(totalIngresos,totalGastos);
+}
+
+
+produccionTabla.innerHTML=db.produccion.map((r,i)=>`<tr><td>${r.proyecto||''}</td><td>${r.cliente||''}</td><td>${r.fecha||''}</td><td><span class="badge">${r.estado||''}</span></td><td>${r.notas||''}</td><td><button class="danger" onclick="del('produccion',${i})">Borrar</button></td></tr>`).join('');
+
+redesTabla.innerHTML=db.redes.map((r,i)=>`<tr><td>${r.cliente||''}</td><td>${r.instagram||''}<br><span class="hidden-pass">${pass(r.instagramPass)}</span></td><td>${r.tiktok||''}<br><span class="hidden-pass">${pass(r.tiktokPass)}</span></td><td>${r.facebook||''}<br><span class="hidden-pass">${pass(r.facebookPass)}</span></td><td>${r.google||''}<br><span class="hidden-pass">${pass(r.googlePass)}</span></td><td>${r.notas||''}</td><td><button class="danger" onclick="del('redes',${i})">Borrar</button></td></tr>`).join('');
+
+plannerTabla.innerHTML=db.planner.map((r,i)=>`<tr><td>${r.proyecto||''}</td><td>${r.fecha||''}</td><td>${r.hora||''}</td><td>${r.cliente||''}</td><td>${r.red||''}</td><td>${r.tipo||''}</td><td><span class="badge">${r.estado||''}</span></td><td>${r.archivos||''}<br><span class="small">${(r.caption||'').slice(0,80)}</span></td><td><button class="danger" onclick="del('planner',${i})">Borrar</button></td></tr>`).join('');
+
+renderCalendar();
+}
+
+function setupCalendar(){
+const months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+calendarMonth.innerHTML=months.map((m,i)=>`<option value="${i}">${m}</option>`).join('');
+calendarYear.innerHTML='';
+for(let y=2026;y<=2040;y++) calendarYear.innerHTML+=`<option value="${y}">${y}</option>`;
+const now=new Date();
+calendarMonth.value=now.getMonth();
+calendarYear.value=Math.min(Math.max(now.getFullYear(),2026),2040);
+const initialDate=calendarYear.value+'-'+String(Number(calendarMonth.value)+1).padStart(2,'0')+'-01';
+agendaFecha.value=initialDate;
+selectedDateTitle.innerText='Agenda del '+initialDate;
+renderAgendaDay(initialDate);
+}
+
+function hoy(){
+const now=new Date();
+calendarMonth.value=now.getMonth();
+calendarYear.value=Math.min(Math.max(now.getFullYear(),2026),2040);
+const date=calendarYear.value+'-'+String(Number(calendarMonth.value)+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+agendaFecha.value=date;
+selectedDateTitle.innerText='Agenda del '+date;
+renderCalendar();
+renderAgendaDay(date);
+}
+
+function selectDay(date){
+agendaFecha.value=date;
+selectedDateTitle.innerText='Agenda del '+date;
+renderCalendar();
+renderAgendaDay(date);
+}
+
+
+function renderFinanceCharts(totalIngresos,totalGastos){
+if(!window.chartBalance) return;
+const max=Math.max(totalIngresos,totalGastos,1);
+const ingresoW=Math.round((totalIngresos/max)*100);
+const gastoW=Math.round((totalGastos/max)*100);
+chartBalance.innerHTML=`
+<div class="bar-row"><div class="bar-label">Ingresos</div><div class="bar-track"><div class="bar-fill" style="width:${ingresoW}%"></div></div><div class="bar-value">${euro(totalIngresos)}</div></div>
+<div class="bar-row"><div class="bar-label">Gastos</div><div class="bar-track"><div class="bar-fill" style="width:${gastoW}%;background:linear-gradient(90deg,#c0392b,#ff6b6b)"></div></div><div class="bar-value">${euro(totalGastos)}</div></div>
+<div class="bar-row"><div class="bar-label">Balance</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round((Math.abs(totalIngresos-totalGastos)/max)*100)}%;background:linear-gradient(90deg,#25d366,#6dff9a)"></div></div><div class="bar-value">${euro(totalIngresos-totalGastos)}</div></div>`;
+const categorias={};
+db.gastos.forEach(g=>categorias[g.categoria]=(categorias[g.categoria]||0)+Number(g.total||0));
+const totalCat=Object.values(categorias).reduce((a,b)=>a+b,0)||1;
+if(window.chartCategorias){
+chartCategorias.innerHTML=Object.entries(categorias).length ? Object.entries(categorias).map(([cat,val])=>{
+const w=Math.round((val/totalCat)*100);
+return `<div class="bar-row"><div class="bar-label">${cat}</div><div class="bar-track"><div class="bar-fill" style="width:${w}%"></div></div><div class="bar-value">${euro(val)}</div></div>`;
+}).join('') : '<p class="small">Todavía no hay gastos cargados.</p>';
+}
+}
+
+function renderCalendar(){
+if(!window.calendarGrid || !window.calendarMonth) return;
+const year=Number(calendarYear.value), month=Number(calendarMonth.value), days=new Date(year,month+1,0).getDate();
+const selected=agendaFecha.value;
+calendarGrid.innerHTML='';
+for(let d=1;d<=days;d++){
+ const date=year+'-'+String(month+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+ const tareas=db.tareas.filter(x=>x.fecha===date).map(x=>(x.hora?x.hora+' · ':'')+x.titulo);
+ const posts=db.planner.filter(x=>x.fecha===date).map(x=>x.red+' · '+x.tipo);
+ const prods=db.produccion.filter(x=>x.fecha===date).map(x=>'🎬 '+x.proyecto);
+ const events=[...tareas,...posts,...prods];
+ calendarGrid.innerHTML+=`<div class="day ${selected===date?'selected':''}" onclick="selectDay('${date}')"><strong>${d}</strong>${events.map(e=>`<div class="event">${e}</div>`).join('')}</div>`;
+}
+}
+
+function guardarTareaAgenda(){
+const fecha=agendaFecha.value;
+const titulo=agendaTitulo.value.trim();
+if(!fecha){alert('Selecciona una fecha');return;}
+if(!titulo){alert('Escribe qué tienes que hacer');return;}
+db.tareas.push({
+ fecha,
+ hora:agendaHora.value,
+ cliente:agendaCliente.value,
+ tipo:agendaTipo.value,
+ prioridad:agendaPrioridad.value,
+ titulo,
+ notas:agendaNotas.value
+});
+save();
+renderAgendaDay(fecha);
+limpiarAgendaForm(false);
+}
+
+function renderAgendaDay(date){
+const tareas=db.tareas.filter(x=>x.fecha===date);
+agendaLista.innerHTML = tareas.length ? tareas.map((t,i)=>{
+ const realIndex=db.tareas.findIndex(x=>x===t);
+ return `<div class="task-row">
+  <div>
+    <strong>${t.hora? t.hora+' · ':''}${t.titulo}</strong><br>
+    <span class="small">${t.tipo||''} · ${t.cliente||''} · <span class="priority-${(t.prioridad||'media').toLowerCase()}">${t.prioridad||''}</span></span><br>
+    <span class="small">${t.notas||''}</span>
+  </div>
+  <button class="danger" onclick="del('tareas',${realIndex});renderAgendaDay('${date}')">Borrar</button>
+ </div>`;
+}).join('') : '<p class="small" style="margin-top:15px">No hay tareas cargadas para este día.</p>';
+}
+
+function limpiarAgendaForm(clearDate=true){
+if(clearDate) agendaFecha.value='';
+agendaHora.value='';
+agendaCliente.value='';
+agendaTipo.value='Tarea';
+agendaPrioridad.value='Media';
+agendaTitulo.value='';
+agendaNotas.value='';
+}
+
+function enviarAgendaWhatsApp(){
+const fecha=agendaFecha.value;
+if(!fecha){alert('Selecciona una fecha');return;}
+const tareas=db.tareas.filter(x=>x.fecha===fecha);
+if(!tareas.length){alert('No hay tareas para enviar en este día');return;}
+const texto='Agenda NOW CRM '+fecha+':\\n\\n'+tareas.map(t=>`- ${t.hora? t.hora+' · ':''}${t.titulo} (${t.tipo||''}) ${t.cliente? '· '+t.cliente:''}`).join('\\n');
+window.open('https://wa.me/'+WHATSAPP_PHONE+'?text='+encodeURIComponent(texto),'_blank');
+}
+
+function addTask(date){
+selectDay(date);
+agendaTitulo.focus();
+}
+
+function borrarTodo(){if(confirm('¿Borrar todos los datos del CRM?')){localStorage.clear();location.reload();}}
+
+setupCalendar();
+render();
+</script>
 </body>
 </html>
