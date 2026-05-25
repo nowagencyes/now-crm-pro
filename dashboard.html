@@ -7,6 +7,188 @@
 <link href="https://fonts.cdnfonts.com/css/ethnocentric" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;max-width:100%;overflow-x:hidden}body{background:#070707;color:#fff;min-height:100vh;display:flex;font-family:Arial,Helvetica,sans-serif}.sidebar{width:280px;background:#111;border-right:1px solid #2a2a2a;padding:28px 20px;position:fixed;left:0;top:0;bottom:0;overflow:auto;box-shadow:18px 0 60px rgba(0,0,0,.45)}.logo{width:105px;height:105px;object-fit:contain;display:block;margin:0 auto 18px}.brand-title{text-align:center;margin-bottom:26px;font-family:'Ethnocentric',Arial,sans-serif;font-size:20px;line-height:1.25}.orange{color:#ff6a00}.white{color:#fff}.menu{display:flex;flex-direction:column;gap:12px}.menu button{padding:15px;border:0;border-radius:14px;background:#2a2a2a;color:#fff;font-weight:bold;cursor:pointer;font-family:'Ethnocentric',Arial,sans-serif;font-size:10px}.menu button:hover,.menu button.active{background:#ff6a00}.main{margin-left:280px;flex:1;padding:45px;background:radial-gradient(circle at top right,rgba(255,106,0,.23),transparent 35%),#090909;min-height:100vh}.section{display:none}.section.active{display:block}h1{font-size:42px;margin-bottom:8px;font-family:'Ethnocentric',Arial,sans-serif}.subtitle{color:#bbb;margin-bottom:28px;font-size:18px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:24px;min-height:120px}.card h3{color:#ff8c2b;font-size:22px;margin-bottom:10px}.card p{color:#ddd}.top-actions{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}.add,.save,.danger,.secondary,.pdf{background:#ff6a00;color:white;border:0;border-radius:14px;padding:12px 16px;font-weight:bold;cursor:pointer}.danger{background:#c0392b}.secondary{background:#333}.pdf{background:#2368ff}.table{width:100%;border-collapse:collapse;margin-top:15px;background:#111;border-radius:18px;overflow:hidden}.table th,.table td{padding:13px;border-bottom:1px solid #252525;text-align:left;vertical-align:top}.table th{color:#ff8c2b;background:#151515}input,select,textarea{width:100%;padding:13px;border-radius:12px;border:1px solid #333;background:#171717;color:white;font-size:15px}textarea{min-height:90px;resize:vertical}.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:20px 0}.form-card{background:#111;border:1px solid #252525;border-radius:18px;padding:20px;margin-bottom:20px;display:none}.form-card.active{display:block}.badge{padding:6px 9px;border-radius:999px;background:rgba(255,106,0,.15);color:#ff8c2b;font-weight:bold;font-size:12px;display:inline-block}.calendar-controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:center}.calendar-controls select{max-width:180px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.day{background:#111;border:1px solid #252525;min-height:135px;border-radius:16px;padding:10px;cursor:pointer}.day:hover,.day.selected{border-color:#ff6a00}.day strong{color:#ff6a00}.event{margin-top:8px;background:rgba(255,106,0,.15);padding:7px;border-radius:8px;font-size:12px;color:#ffd1a8}.agenda-panel{background:#111;border:1px solid #252525;border-radius:18px;padding:20px;margin-bottom:20px}.agenda-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:15px}.task-row{display:flex;justify-content:space-between;gap:10px;background:#171717;border:1px solid #292929;border-radius:12px;padding:12px;margin-top:10px}.task-row strong{color:#ff8c2b}.small{font-size:12px;color:#aaa}.actions{display:flex;gap:7px;flex-wrap:wrap}.actions button{padding:8px 10px;border-radius:10px;font-size:12px}@media(max-width:900px){body{display:block}.sidebar{position:relative;width:100%;height:auto;border-right:0;border-bottom:1px solid #2a2a2a;padding:20px 14px}.menu{display:grid;grid-template-columns:repeat(2,1fr)}.main{margin-left:0;padding:20px 14px}h1{font-size:28px}.cards,.form-grid,.agenda-form{grid-template-columns:1fr}.calendar{grid-template-columns:1fr}.table{display:block;overflow-x:auto;white-space:nowrap}.brand-title{font-size:17px}.menu button{font-size:10px}}
+
+/* NOW BLACK + ORANGE CLEAN THEME - SIN 3D */
+*{
+  animation:none!important;
+  transition:none!important;
+  transform:none!important;
+  box-shadow:none!important;
+}
+
+body{
+  background:
+    radial-gradient(circle at top right, rgba(255,106,0,.24), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(255,106,0,.14), transparent 28%),
+    linear-gradient(180deg,#000000,#050505)!important;
+  color:#ffffff!important;
+}
+
+.sidebar{
+  background:#050505!important;
+  border-right:1px solid rgba(255,106,0,.35)!important;
+  box-shadow:none!important;
+}
+
+.main{
+  background:
+    radial-gradient(circle at top right, rgba(255,106,0,.18), transparent 35%),
+    linear-gradient(180deg,#000000,#050505)!important;
+}
+
+.card,
+.form-card,
+.agenda-panel,
+.chart-box,
+.finance-kpi{
+  background:rgba(255,106,0,.075)!important;
+  border:1px solid rgba(255,106,0,.28)!important;
+  box-shadow:none!important;
+}
+
+.card:hover,
+.form-card:hover,
+.agenda-panel:hover,
+.chart-box:hover,
+.finance-kpi:hover{
+  transform:none!important;
+  box-shadow:none!important;
+}
+
+.menu button{
+  background:#120804!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+  color:#ffffff!important;
+  box-shadow:none!important;
+}
+
+.menu button:hover,
+.menu button.active{
+  background:#ff6a00!important;
+  color:#ffffff!important;
+  transform:none!important;
+  box-shadow:none!important;
+}
+
+input,
+select,
+textarea{
+  background:#0b0502!important;
+  border:1px solid rgba(255,106,0,.35)!important;
+  color:#ffffff!important;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#ff6a00!important;
+  outline:none!important;
+  box-shadow:0 0 0 2px rgba(255,106,0,.18)!important;
+}
+
+.table{
+  background:#050505!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+}
+
+.table th{
+  background:#140904!important;
+  color:#ff8c2b!important;
+  border-bottom:1px solid rgba(255,106,0,.35)!important;
+}
+
+.table td{
+  border-bottom:1px solid rgba(255,106,0,.16)!important;
+}
+
+.table tbody tr:hover{
+  background:rgba(255,106,0,.08)!important;
+  transform:none!important;
+}
+
+.day{
+  background:#080301!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+}
+
+.day:hover,
+.day.selected{
+  border-color:#ff6a00!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+
+.event{
+  background:rgba(255,106,0,.18)!important;
+  color:#ffd1a8!important;
+}
+
+.badge{
+  background:rgba(255,106,0,.18)!important;
+  color:#ffb26b!important;
+  box-shadow:none!important;
+}
+
+.add,
+.save,
+.pdf{
+  background:#ff6a00!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+
+.secondary{
+  background:#1a0d05!important;
+  border:1px solid rgba(255,106,0,.35)!important;
+  color:#fff!important;
+}
+
+.danger{
+  background:#7a1f12!important;
+  color:#fff!important;
+}
+
+.add:hover,
+.save:hover,
+.pdf:hover,
+.secondary:hover,
+.danger:hover{
+  transform:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+
+.orange,
+.brand-orange,
+.logo-now{
+  color:#ff6a00!important;
+  text-shadow:none!important;
+}
+
+.white,
+.brand-white{
+  color:#ffffff!important;
+  text-shadow:none!important;
+}
+
+.subtitle,
+.small,
+.card p{
+  color:#d8d8d8!important;
+}
+
+.task-row{
+  background:#0b0502!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+}
+
+@media(max-width:900px){
+  .sidebar{
+    border-right:0!important;
+    border-bottom:1px solid rgba(255,106,0,.35)!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -30,7 +212,189 @@ function nuevaFactura(){facturaId.value='';facturaForm.classList.add('active')}f
 function nuevoGasto(){gastoId.value='';gastoForm.classList.add('active')}function editarGasto(id){const r=db.gastos.find(x=>x.id===id);if(!r)return;gastoId.value=r.id;gastoFecha.value=r.fecha||'';gastoProveedor.value=r.proveedor||'';gastoConcepto.value=r.concepto||'';gastoCategoria.value=r.categoria||'Otros';gastoBase.value=r.base||'';gastoIgic.value=r.igic_pct||7;gastoMetodo.value=r.metodo||'Tarjeta';gastoNotas.value=r.notas||'';gastoForm.classList.add('active')}function guardarGasto(){let base=Number(gastoBase.value||0),igic_pct=Number(gastoIgic.value||0),igic=base*igic_pct/100,total=base+igic;insertOrUpdate('gastos',gastoId.value,{fecha:gastoFecha.value||null,proveedor:gastoProveedor.value,concepto:gastoConcepto.value,categoria:gastoCategoria.value,base,igic_pct,igic,total,metodo:gastoMetodo.value,notas:gastoNotas.value});gastoForm.classList.remove('active')}
 function guardarProduccion(){insertOrUpdate('produccion','',{proyecto:prodProyecto.value,cliente:prodCliente.value,fecha:prodFecha.value||null,estado:prodEstado.value,notas:prodNotas.value})}function guardarRed(){insertOrUpdate('redes','',{cliente:redCliente.value,instagram:redInstagram.value,instagram_pass:redInstagramPass.value,tiktok:redTiktok.value,tiktok_pass:redTiktokPass.value,facebook:redFacebook.value,facebook_pass:redFacebookPass.value,google:redGoogle.value,google_pass:redGooglePass.value,notas:redNotas.value})}function guardarPlanner(){insertOrUpdate('planner','',{proyecto:planProyecto.value,fecha:planFecha.value||null,hora:planHora.value||null,cliente:planCliente.value,red:planRed.value,tipo:planTipo.value,estado:planEstado.value,caption:planCaption.value,hashtags:planHashtags.value,archivos:planArchivos.value})}
 function limpiarTarea(){agendaId.value='';agendaHora.value='';agendaCliente.value='';agendaTipo.value='Tarea';agendaTitulo.value='';agendaNotas.value=''}function editarTarea(id){const r=db.tareas.find(x=>x.id===id);if(!r)return;agendaId.value=r.id;agendaFecha.value=r.fecha||'';agendaHora.value=r.hora||'';agendaCliente.value=r.cliente||'';agendaTipo.value=r.tipo||'Tarea';agendaTitulo.value=r.titulo||'';agendaNotas.value=r.notas||'';selectedDateTitle.innerText='Editando tarea del '+agendaFecha.value}function guardarTareaAgenda(){if(!agendaFecha.value||!agendaTitulo.value)return alert('Completa fecha y tarea');insertOrUpdate('tareas',agendaId.value,{fecha:agendaFecha.value,hora:agendaHora.value||null,cliente:agendaCliente.value,tipo:agendaTipo.value,titulo:agendaTitulo.value,notas:agendaNotas.value});limpiarTarea()}
-function generarPDF(id){const r=db.facturas.find(x=>x.id===id);if(!r)return;const c=db.clientes.find(x=>(x.empresa||'').toLowerCase()===(r.cliente||'').toLowerCase()||(x.encargado||'').toLowerCase()===(r.cliente||'').toLowerCase());const w=window.open('','_blank');w.document.write(`<!doctype html><html><head><title>${r.tipo} ${r.numero}</title><style>body{font-family:Arial;padding:40px;color:#111}.top{display:flex;justify-content:space-between;border-bottom:3px solid #ff6a00;padding-bottom:20px}.brand{font-size:32px;font-weight:bold}.orange{color:#ff6a00}table{width:100%;border-collapse:collapse;margin-top:30px}th,td{border:1px solid #ddd;padding:12px;text-align:left}th{background:#111;color:white}.totals{margin-top:30px;margin-left:auto;width:300px}.totals div{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #ddd}.total{font-size:22px;font-weight:bold;color:#ff6a00}.footer{margin-top:60px;font-size:12px;color:#555}@media print{button{display:none}}</style></head><body><button onclick="window.print()">Descargar / imprimir PDF</button><div class="top"><div><div class="brand"><span class="orange">NOW</span> Agency</div><p>Creative Agency</p><p>hola@nowagency.es · +34 666 962 212</p></div><div><h1>${r.tipo||'Factura'}</h1><p><b>Nº:</b> ${r.numero||''}</p><p><b>Fecha:</b> ${r.fecha||new Date().toISOString().slice(0,10)}</p></div></div><h2>Cliente</h2><p><b>${r.cliente||''}</b></p><p>${c?.direccion_empresa||''}</p><p>${c?.cif?'CIF: '+c.cif:''}</p><p>${c?.email_empresa||c?.email||''}</p><table><thead><tr><th>Concepto</th><th>Base</th><th>IGIC</th><th>Total</th></tr></thead><tbody><tr><td>${r.concepto||''}<br><small>${r.notas||''}</small></td><td>${euro(r.base)}</td><td>${r.igic_pct||0}% · ${euro(r.igic)}</td><td>${euro(r.total)}</td></tr></tbody></table><div class="totals"><div><span>Base</span><b>${euro(r.base)}</b></div><div><span>IGIC</span><b>${euro(r.igic)}</b></div><div class="total"><span>Total</span><b>${euro(r.total)}</b></div></div><div class="footer">Documento generado desde NOW Agency CRM. Válido como ${r.tipo||'documento'}.</div></body></html>`);w.document.close()}
+function generarPDF(id){const r=db.facturas.find(x=>x.id===id);if(!r)return;const c=db.clientes.find(x=>(x.empresa||'').toLowerCase()===(r.cliente||'').toLowerCase()||(x.encargado||'').toLowerCase()===(r.cliente||'').toLowerCase());const w=window.open('','_blank');w.document.write(`<!doctype html><html><head><title>${r.tipo} ${r.numero}</title><style>body{font-family:Arial;padding:40px;color:#111}.top{display:flex;justify-content:space-between;border-bottom:3px solid #ff6a00;padding-bottom:20px}.brand{font-size:32px;font-weight:bold}.orange{color:#ff6a00}table{width:100%;border-collapse:collapse;margin-top:30px}th,td{border:1px solid #ddd;padding:12px;text-align:left}th{background:#111;color:white}.totals{margin-top:30px;margin-left:auto;width:300px}.totals div{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #ddd}.total{font-size:22px;font-weight:bold;color:#ff6a00}.footer{margin-top:60px;font-size:12px;color:#555}@media print{button{display:none}}
+/* NOW BLACK + ORANGE CLEAN THEME - SIN 3D */
+*{
+  animation:none!important;
+  transition:none!important;
+  transform:none!important;
+  box-shadow:none!important;
+}
+
+body{
+  background:
+    radial-gradient(circle at top right, rgba(255,106,0,.24), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(255,106,0,.14), transparent 28%),
+    linear-gradient(180deg,#000000,#050505)!important;
+  color:#ffffff!important;
+}
+
+.sidebar{
+  background:#050505!important;
+  border-right:1px solid rgba(255,106,0,.35)!important;
+  box-shadow:none!important;
+}
+
+.main{
+  background:
+    radial-gradient(circle at top right, rgba(255,106,0,.18), transparent 35%),
+    linear-gradient(180deg,#000000,#050505)!important;
+}
+
+.card,
+.form-card,
+.agenda-panel,
+.chart-box,
+.finance-kpi{
+  background:rgba(255,106,0,.075)!important;
+  border:1px solid rgba(255,106,0,.28)!important;
+  box-shadow:none!important;
+}
+
+.card:hover,
+.form-card:hover,
+.agenda-panel:hover,
+.chart-box:hover,
+.finance-kpi:hover{
+  transform:none!important;
+  box-shadow:none!important;
+}
+
+.menu button{
+  background:#120804!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+  color:#ffffff!important;
+  box-shadow:none!important;
+}
+
+.menu button:hover,
+.menu button.active{
+  background:#ff6a00!important;
+  color:#ffffff!important;
+  transform:none!important;
+  box-shadow:none!important;
+}
+
+input,
+select,
+textarea{
+  background:#0b0502!important;
+  border:1px solid rgba(255,106,0,.35)!important;
+  color:#ffffff!important;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#ff6a00!important;
+  outline:none!important;
+  box-shadow:0 0 0 2px rgba(255,106,0,.18)!important;
+}
+
+.table{
+  background:#050505!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+}
+
+.table th{
+  background:#140904!important;
+  color:#ff8c2b!important;
+  border-bottom:1px solid rgba(255,106,0,.35)!important;
+}
+
+.table td{
+  border-bottom:1px solid rgba(255,106,0,.16)!important;
+}
+
+.table tbody tr:hover{
+  background:rgba(255,106,0,.08)!important;
+  transform:none!important;
+}
+
+.day{
+  background:#080301!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+}
+
+.day:hover,
+.day.selected{
+  border-color:#ff6a00!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+
+.event{
+  background:rgba(255,106,0,.18)!important;
+  color:#ffd1a8!important;
+}
+
+.badge{
+  background:rgba(255,106,0,.18)!important;
+  color:#ffb26b!important;
+  box-shadow:none!important;
+}
+
+.add,
+.save,
+.pdf{
+  background:#ff6a00!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+
+.secondary{
+  background:#1a0d05!important;
+  border:1px solid rgba(255,106,0,.35)!important;
+  color:#fff!important;
+}
+
+.danger{
+  background:#7a1f12!important;
+  color:#fff!important;
+}
+
+.add:hover,
+.save:hover,
+.pdf:hover,
+.secondary:hover,
+.danger:hover{
+  transform:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+
+.orange,
+.brand-orange,
+.logo-now{
+  color:#ff6a00!important;
+  text-shadow:none!important;
+}
+
+.white,
+.brand-white{
+  color:#ffffff!important;
+  text-shadow:none!important;
+}
+
+.subtitle,
+.small,
+.card p{
+  color:#d8d8d8!important;
+}
+
+.task-row{
+  background:#0b0502!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+}
+
+@media(max-width:900px){
+  .sidebar{
+    border-right:0!important;
+    border-bottom:1px solid rgba(255,106,0,.35)!important;
+  }
+}
+
+</style></head><body><button onclick="window.print()">Descargar / imprimir PDF</button><div class="top"><div><div class="brand"><span class="orange">NOW</span> Agency</div><p>Creative Agency</p><p>hola@nowagency.es · +34 666 962 212</p></div><div><h1>${r.tipo||'Factura'}</h1><p><b>Nº:</b> ${r.numero||''}</p><p><b>Fecha:</b> ${r.fecha||new Date().toISOString().slice(0,10)}</p></div></div><h2>Cliente</h2><p><b>${r.cliente||''}</b></p><p>${c?.direccion_empresa||''}</p><p>${c?.cif?'CIF: '+c.cif:''}</p><p>${c?.email_empresa||c?.email||''}</p><table><thead><tr><th>Concepto</th><th>Base</th><th>IGIC</th><th>Total</th></tr></thead><tbody><tr><td>${r.concepto||''}<br><small>${r.notas||''}</small></td><td>${euro(r.base)}</td><td>${r.igic_pct||0}% · ${euro(r.igic)}</td><td>${euro(r.total)}</td></tr></tbody></table><div class="totals"><div><span>Base</span><b>${euro(r.base)}</b></div><div><span>IGIC</span><b>${euro(r.igic)}</b></div><div class="total"><span>Total</span><b>${euro(r.total)}</b></div></div><div class="footer">Documento generado desde NOW Agency CRM. Válido como ${r.tipo||'documento'}.</div></body></html>`);w.document.close()}
 function render(){const ingresos=db.facturas.reduce((a,b)=>a+Number(b.total||0),0),gastos=db.gastos.reduce((a,b)=>a+Number(b.total||0),0);countClientes.innerText=db.clientes.length;countFacturas.innerText=euro(ingresos);countGastos.innerText=euro(gastos);countBalance.innerText=euro(ingresos-gastos);countPlanner.innerText=db.planner.length;countTareas.innerText=db.tareas.length;finIngresos.innerText=euro(ingresos);finGastos.innerText=euro(gastos);finBalance.innerText=euro(ingresos-gastos);clientesTabla.innerHTML=db.clientes.map(r=>`<tr><td>${r.encargado||''}<br><span class="small">${r.telefono||''}<br>${r.email||''}</span></td><td>${r.empresa||''}</td><td>${r.direccion_empresa||''}</td><td>${r.cif||''}</td><td>${r.email_empresa||''}</td><td><span class="badge">${r.pack||''}</span></td><td><span class="badge">${r.estado||''}</span></td><td><div class="actions"><button class="secondary" onclick="editarCliente('${r.id}')">Editar</button><button class="danger" onclick="del('clientes','${r.id}')">Borrar</button></div></td></tr>`).join('');facturasTabla.innerHTML=db.facturas.map(r=>`<tr><td>${r.numero||''}</td><td>${r.tipo||''}</td><td>${r.cliente||''}</td><td>${r.concepto||''}</td><td>${euro(r.base)}</td><td>${r.igic_pct||0}%<br>${euro(r.igic)}</td><td>${euro(r.total)}</td><td><span class="badge">${r.estado||''}</span></td><td><div class="actions"><button class="secondary" onclick="editarFactura('${r.id}')">Editar</button><button class="pdf" onclick="generarPDF('${r.id}')">PDF</button><button class="danger" onclick="del('facturas','${r.id}')">Borrar</button></div></td></tr>`).join('');gastosTabla.innerHTML=db.gastos.map(r=>`<tr><td>${r.fecha||''}</td><td>${r.proveedor||''}</td><td>${r.concepto||''}</td><td>${r.categoria||''}</td><td>${euro(r.total)}</td><td><div class="actions"><button class="secondary" onclick="editarGasto('${r.id}')">Editar</button><button class="danger" onclick="del('gastos','${r.id}')">Borrar</button></div></td></tr>`).join('');produccionTabla.innerHTML=db.produccion.map(r=>`<tr><td>${r.proyecto||''}</td><td>${r.cliente||''}</td><td>${r.fecha||''}</td><td>${r.estado||''}</td><td>${r.notas||''}</td><td><button class="danger" onclick="del('produccion','${r.id}')">Borrar</button></td></tr>`).join('');redesTabla.innerHTML=db.redes.map(r=>`<tr><td>${r.cliente||''}</td><td>${r.instagram||''}<br>${pass(r.instagram_pass)}</td><td>${r.tiktok||''}<br>${pass(r.tiktok_pass)}</td><td>${r.facebook||''}<br>${pass(r.facebook_pass)}</td><td>${r.google||''}<br>${pass(r.google_pass)}</td><td><button class="danger" onclick="del('redes','${r.id}')">Borrar</button></td></tr>`).join('');plannerTabla.innerHTML=db.planner.map(r=>`<tr><td>${r.proyecto||''}</td><td>${r.fecha||''}</td><td>${r.cliente||''}</td><td>${r.red||''}</td><td>${r.tipo||''}</td><td><span class="badge">${r.estado||''}</span></td><td><button class="danger" onclick="del('planner','${r.id}')">Borrar</button></td></tr>`).join('');renderCalendar();}
 function setupCalendar(){const months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];calendarMonth.innerHTML=months.map((m,i)=>`<option value="${i}">${m}</option>`).join('');for(let y=2026;y<=2040;y++)calendarYear.innerHTML+=`<option value="${y}">${y}</option>`;const n=new Date();calendarMonth.value=n.getMonth();calendarYear.value=Math.min(Math.max(n.getFullYear(),2026),2040);agendaFecha.value=calendarYear.value+'-'+String(Number(calendarMonth.value)+1).padStart(2,'0')+'-01'}function hoy(){const n=new Date();calendarMonth.value=n.getMonth();calendarYear.value=Math.min(Math.max(n.getFullYear(),2026),2040);renderCalendar()}function selectDay(date){agendaFecha.value=date;selectedDateTitle.innerText='Agenda del '+date;renderCalendar();renderAgendaDay(date)}function renderCalendar(){if(!window.calendarGrid)return;const year=Number(calendarYear.value),month=Number(calendarMonth.value),days=new Date(year,month+1,0).getDate();calendarGrid.innerHTML='';for(let d=1;d<=days;d++){const date=year+'-'+String(month+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');const ev=[...db.tareas.filter(x=>x.fecha===date).map(x=>(x.hora?x.hora+' · ':'')+x.titulo),...db.planner.filter(x=>x.fecha===date).map(x=>x.red+' · '+x.tipo),...db.produccion.filter(x=>x.fecha===date).map(x=>'🎬 '+x.proyecto)];calendarGrid.innerHTML+=`<div class="day ${agendaFecha.value===date?'selected':''}" onclick="selectDay('${date}')"><strong>${d}</strong>${ev.map(e=>`<div class="event">${e}</div>`).join('')}</div>`}}function renderAgendaDay(date){const arr=db.tareas.filter(x=>x.fecha===date);agendaLista.innerHTML=arr.length?arr.map(t=>`<div class="task-row"><div><strong>${t.hora||''} ${t.titulo||''}</strong><br><span class="small">${t.tipo||''} · ${t.cliente||''}</span><br><span class="small">${t.notas||''}</span></div><div class="actions"><button class="secondary" onclick="editarTarea('${t.id}')">Editar</button><button class="danger" onclick="del('tareas','${t.id}')">Borrar</button></div></div>`).join(''):'<p class="small">Sin tareas para este día.</p>'}
 setupCalendar();loadAll();subscribe();
