@@ -277,191 +277,8 @@ textarea:focus{
 }
 
 
-/* NOW INDEX MATCHING THEME */
-*{
-  box-shadow:none!important;
-  text-shadow:none!important;
-  animation:none!important;
-}
-
-html,body{
-  background:
-    radial-gradient(circle at top right, rgba(255,106,0,.10), transparent 30%),
-    linear-gradient(180deg,#000000,#050505)!important;
-  color:white!important;
-}
-
-.sidebar{
-  background:#0b0b0b!important;
-  border-right:1px solid #1f1f1f!important;
-}
-
-.main{
-  background:
-    radial-gradient(circle at top right, rgba(255,106,0,.10), transparent 30%),
-    linear-gradient(180deg,#000000,#050505)!important;
-}
-
-.brand-title,
-.main-title,
-h1{
-  color:#ffffff!important;
-}
-
-.orange,
-.brand-orange,
-.logo-now{
-  color:#ff6a00!important;
-}
-
-.white,
-.brand-white{
-  color:#ffffff!important;
-}
-
-.menu button,
-.add,
-.save,
-.secondary,
-.pdf{
-  background:#1c1c1c!important;
-  border:1px solid rgba(255,106,0,.18)!important;
-  color:#ff6a00!important;
-  box-shadow:none!important;
-  transform:none!important;
-}
-
-.menu button:hover,
-.menu button.active,
-.add:hover,
-.save:hover,
-.secondary:hover,
-.pdf:hover{
-  background:#ff6a00!important;
-  color:#ffffff!important;
-  border-color:#ff6a00!important;
-  transform:none!important;
-}
-
-.danger{
-  background:#1c1c1c!important;
-  border:1px solid rgba(255,80,80,.25)!important;
-  color:#ff6666!important;
-}
-
-.danger:hover{
-  background:#c0392b!important;
-  color:white!important;
-}
-
-.card,
-.form-card,
-.agenda-panel,
-.alert-card,
-.client-profile,
-.profile-box,
-.finance-kpi,
-.chart-box{
-  background:#0b0b0b!important;
-  border:1px solid #1f1f1f!important;
-  border-radius:22px!important;
-  box-shadow:none!important;
-  transform:none!important;
-}
-
-.card:hover,
-.form-card:hover,
-.agenda-panel:hover,
-.alert-card:hover,
-.client-profile:hover,
-.profile-box:hover{
-  border-color:rgba(255,106,0,.30)!important;
-  transform:none!important;
-  box-shadow:none!important;
-}
-
-.card h3,
-.alert-card h3,
-.profile-box strong,
-h2{
-  color:#ff8c2b!important;
-}
-
-.subtitle,
-.small,
-.card p,
-.footer{
-  color:#8f8f8f!important;
-}
-
-input,
-select,
-textarea{
-  background:#111111!important;
-  border:1px solid #222!important;
-  color:white!important;
-  border-radius:14px!important;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#ff6a00!important;
-  background:#141414!important;
-  outline:none!important;
-}
-
-.table{
-  background:#0b0b0b!important;
-  border:1px solid #1f1f1f!important;
-  border-radius:18px!important;
-}
-
-.table th{
-  background:#111111!important;
-  color:#ff8c2b!important;
-  border-bottom:1px solid #1f1f1f!important;
-}
-
-.table td{
-  border-bottom:1px solid #1f1f1f!important;
-}
-
-.table tbody tr:hover{
-  background:#111111!important;
-}
-
-.badge,
-.event{
-  background:#111111!important;
-  border:1px solid rgba(255,106,0,.18)!important;
-  color:#ff8c2b!important;
-}
-
-.day{
-  background:#0b0b0b!important;
-  border:1px solid #1f1f1f!important;
-}
-
-.day:hover,
-.day.selected{
-  border-color:#ff6a00!important;
-  background:#111111!important;
-}
-
-.beta-toolbar{
-  background:#0b0b0b!important;
-  border:1px solid #1f1f1f!important;
-}
-
-.task-row{
-  background:#111111!important;
-  border:1px solid #1f1f1f!important;
-}
-
-.logo{
-  filter:none!important;
-}
+input[type="file"]{border:1px dashed rgba(255,106,0,.45)!important;padding:16px!important;cursor:pointer}
+input[type="file"]::file-selector-button{background:#1c1c1c;color:#ff6a00;border:1px solid rgba(255,106,0,.25);border-radius:10px;padding:10px 12px;margin-right:12px;cursor:pointer}
 
 </style>
 </head>
@@ -480,9 +297,9 @@ textarea:focus{
 <div id="searchResults"></div>
 
 <section id="dashboard" class="section active"><h1><span class="orange">NOW</span> <span class="white">Agency CRM</span></h1><div class="subtitle">Realtime activo · Beta profesional NOW Agency</div><div class="alert-panel"><div class="alert-card"><h3>Alertas de tareas</h3><div id="alertTareas"></div></div><div class="alert-card"><h3>Facturas pendientes</h3><div id="alertFacturas"></div></div><div class="alert-card"><h3>Próximas publicaciones</h3><div id="alertPlanner"></div></div></div><div class="cards"><div class="card"><h3 id="countClientes">0</h3><p>Clientes cargados</p></div><div class="card"><h3 id="countFacturas">0€</h3><p>Total facturado</p></div><div class="card"><h3 id="countGastos">0€</h3><p>Total gastos</p></div><div class="card"><h3 id="countBalance">0€</h3><p>Balance neto</p></div><div class="card"><h3 id="countPlanner">0</h3><p>Publicaciones</p></div><div class="card"><h3 id="countTareas">0</h3><p>Tareas</p></div></div></section>
-<section id="clientes" class="section"><h1>Clientes</h1><div class="subtitle">Crear, editar y abrir ficha completa de cliente</div><div id="clientProfile" class="client-profile"></div><div class="top-actions"><button class="add" onclick="nuevoCliente()">+ Nuevo cliente</button></div><div class="form-card" id="clienteForm"><input type="hidden" id="clienteId"><div class="form-grid"><input id="clienteEncargado" placeholder="Nombre encargado"><input id="clienteTelefono" placeholder="Teléfono encargado"><input id="clienteEmail" placeholder="Email encargado"><input id="clienteEmpresa" placeholder="Nombre empresa"><input id="clienteDireccionEmpresa" placeholder="Dirección empresa"><input id="clienteCif" placeholder="CIF"><input id="clienteTelefonoEmpresa" placeholder="Teléfono empresa"><input id="clienteEmailEmpresa" placeholder="Email empresa"><select id="clientePack"><option>Básico</option><option>Intermedio</option><option>Pro</option><option>Premium</option><option>Pack Básico Video</option><option>Pack 3 Videos</option></select><select id="clienteEstado"><option>Activo</option><option>Potencial</option><option>Pausado</option><option>Finalizado</option></select><textarea id="clienteNotas" placeholder="Notas del cliente"></textarea></div><button class="save" onclick="guardarCliente()">Guardar cliente</button></div><table class="table"><thead><tr><th>Encargado</th><th>Empresa</th><th>Dirección</th><th>CIF</th><th>Email empresa</th><th>Pack</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="clientesTabla"></tbody></table></section>
-<section id="facturacion" class="section"><h1>Facturación</h1><div class="subtitle">Crear, editar y generar PDF de factura/proforma</div><div class="filter-row"><input id="filterFacturaCliente" placeholder="Filtrar por cliente" oninput="render()"><select id="filterFacturaEstado" onchange="render()"><option value="">Todos los estados</option><option>Pendiente</option><option>Pagada</option><option>Vencida</option><option>Anulada</option></select></div><div class="top-actions"><button class="add" onclick="nuevaFactura()">+ Nueva factura</button></div><div class="form-card" id="facturaForm"><input type="hidden" id="facturaId"><div class="form-grid"><input id="facturaNumero" placeholder="Nº factura / proforma"><select id="facturaTipo"><option>Proforma</option><option>Factura</option></select><input id="facturaCliente" placeholder="Cliente"><input id="facturaConcepto" placeholder="Concepto"><input id="facturaBase" type="number" placeholder="Base imponible €"><input id="facturaIgic" type="number" value="7" placeholder="IGIC %"><select id="facturaEstado"><option>Pendiente</option><option>Pagada</option><option>Vencida</option><option>Anulada</option></select><input id="facturaFecha" type="date"><textarea id="facturaNotas" placeholder="Notas para factura"></textarea></div><button class="save" onclick="guardarFactura()">Guardar factura</button></div><table class="table"><thead><tr><th>Nº</th><th>Tipo</th><th>Cliente</th><th>Concepto</th><th>Base</th><th>IGIC</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="facturasTabla"></tbody></table></section>
-<section id="finanzas" class="section"><h1>Finanzas</h1><div class="subtitle">Crear y editar gastos</div><div class="cards"><div class="card"><h3 id="finIngresos">0€</h3><p>Ingresos</p></div><div class="card"><h3 id="finGastos">0€</h3><p>Gastos</p></div><div class="card"><h3 id="finBalance">0€</h3><p>Balance</p></div></div><div class="top-actions"><button class="add" onclick="nuevoGasto()">+ Nuevo gasto</button></div><div class="form-card" id="gastoForm"><input type="hidden" id="gastoId"><div class="form-grid"><input id="gastoFecha" type="date"><input id="gastoProveedor" placeholder="Proveedor"><input id="gastoConcepto" placeholder="Concepto"><select id="gastoCategoria"><option>Software</option><option>Publicidad</option><option>Producción</option><option>Transporte</option><option>Material</option><option>Impuestos</option><option>Otros</option></select><input id="gastoBase" type="number" placeholder="Base €"><input id="gastoIgic" type="number" value="7" placeholder="IGIC/IVA %"><select id="gastoMetodo"><option>Tarjeta</option><option>Transferencia</option><option>Efectivo</option><option>Bizum</option></select><textarea id="gastoNotas" placeholder="Notas"></textarea></div><button class="save" onclick="guardarGasto()">Guardar gasto</button></div><table class="table"><thead><tr><th>Fecha</th><th>Proveedor</th><th>Concepto</th><th>Categoría</th><th>Total</th><th>Acciones</th></tr></thead><tbody id="gastosTabla"></tbody></table></section>
+<section id="clientes" class="section"><h1>Clientes</h1><div class="subtitle">Crear, editar y abrir ficha completa de cliente</div><div id="clientProfile" class="client-profile"></div><div class="top-actions"><button class="add" onclick="nuevoCliente()">+ Nuevo cliente</button></div><div class="form-card" id="clienteForm"><input type="hidden" id="clienteId"><div class="form-grid"><input id="clienteEncargado" placeholder="Nombre encargado"><input id="clienteTelefono" placeholder="Teléfono encargado"><input id="clienteEmail" placeholder="Email encargado"><input id="clienteEmpresa" placeholder="Nombre empresa"><input id="clienteDireccionEmpresa" placeholder="Dirección empresa"><input id="clienteCif" placeholder="CIF"><input id="clienteTelefonoEmpresa" placeholder="Teléfono empresa"><input id="clienteEmailEmpresa" placeholder="Email empresa"><select id="clientePack"><option>Básico</option><option>Intermedio</option><option>Pro</option><option>Premium</option><option>Pack Básico Video</option><option>Pack 3 Videos</option></select><select id="clienteEstado"><option>Activo</option><option>Potencial</option><option>Pausado</option><option>Finalizado</option></select><textarea id="clienteNotas" placeholder="Notas del cliente"></textarea></div><button class="save" onclick="guardarCliente()">Guardar cliente</button></div><table class="table"><thead><tr><th>Encargado</th><th>Empresa</th><th>Dirección</th><th>CIF</th><th>Email empresa</th><th>Pack</th><th>Estado</th><th>Archivo</th><th>Acciones</th></tr></thead><tbody id="clientesTabla"></tbody></table></section>
+<section id="facturacion" class="section"><h1>Facturación</h1><div class="subtitle">Crear, editar y generar PDF de factura/proforma</div><div class="filter-row"><input id="filterFacturaCliente" placeholder="Filtrar por cliente" oninput="render()"><select id="filterFacturaEstado" onchange="render()"><option value="">Todos los estados</option><option>Pendiente</option><option>Pagada</option><option>Vencida</option><option>Anulada</option></select></div><div class="top-actions"><button class="add" onclick="nuevaFactura()">+ Nueva factura</button></div><div class="form-card" id="facturaForm"><input type="hidden" id="facturaId"><div class="form-grid"><input id="facturaNumero" placeholder="Nº factura / proforma"><select id="facturaTipo"><option>Proforma</option><option>Factura</option></select><input id="facturaCliente" placeholder="Cliente"><input id="facturaConcepto" placeholder="Concepto"><input id="facturaBase" type="number" placeholder="Base imponible €"><input id="facturaIgic" type="number" value="7" placeholder="IGIC %"><select id="facturaEstado"><option>Pendiente</option><option>Pagada</option><option>Vencida</option><option>Anulada</option></select><input id="facturaFecha" type="date"><textarea id="facturaNotas" placeholder="Notas para factura"></textarea><input id="facturaArchivo" type="file" accept="image/*,application/pdf" capture="environment"></div><button class="save" onclick="guardarFactura()">Guardar factura</button></div><table class="table"><thead><tr><th>Nº</th><th>Tipo</th><th>Cliente</th><th>Concepto</th><th>Base</th><th>IGIC</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="facturasTabla"></tbody></table></section>
+<section id="finanzas" class="section"><h1>Finanzas</h1><div class="subtitle">Crear y editar gastos</div><div class="cards"><div class="card"><h3 id="finIngresos">0€</h3><p>Ingresos</p></div><div class="card"><h3 id="finGastos">0€</h3><p>Gastos</p></div><div class="card"><h3 id="finBalance">0€</h3><p>Balance</p></div></div><div class="top-actions"><button class="add" onclick="nuevoGasto()">+ Nuevo gasto</button></div><div class="form-card" id="gastoForm"><input type="hidden" id="gastoId"><div class="form-grid"><input id="gastoFecha" type="date"><input id="gastoProveedor" placeholder="Proveedor"><input id="gastoConcepto" placeholder="Concepto"><select id="gastoCategoria"><option>Software</option><option>Publicidad</option><option>Producción</option><option>Transporte</option><option>Material</option><option>Impuestos</option><option>Otros</option></select><input id="gastoBase" type="number" placeholder="Base €"><input id="gastoIgic" type="number" value="7" placeholder="IGIC/IVA %"><select id="gastoMetodo"><option>Tarjeta</option><option>Transferencia</option><option>Efectivo</option><option>Bizum</option></select><textarea id="gastoNotas" placeholder="Notas"></textarea><input id="gastoArchivo" type="file" accept="image/*,application/pdf" capture="environment"></div><button class="save" onclick="guardarGasto()">Guardar gasto</button></div><table class="table"><thead><tr><th>Fecha</th><th>Proveedor</th><th>Concepto</th><th>Categoría</th><th>Total</th><th>Archivo</th><th>Acciones</th></tr></thead><tbody id="gastosTabla"></tbody></table></section>
 <section id="produccion" class="section"><h1>Producción</h1><div class="subtitle">Rodajes, shootings y entregas</div><div class="top-actions"><button class="add" onclick="toggleForm('produccionForm')">+ Nueva producción</button></div><div class="form-card" id="produccionForm"><div class="form-grid"><input id="prodProyecto" placeholder="Proyecto"><input id="prodCliente" placeholder="Cliente"><input id="prodFecha" type="date"><select id="prodEstado"><option>Briefing</option><option>Planificado</option><option>Grabando</option><option>Editando</option><option>Entregado</option></select><textarea id="prodNotas" placeholder="Notas"></textarea></div><button class="save" onclick="guardarProduccion()">Guardar producción</button></div><table class="table"><thead><tr><th>Proyecto</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th>Notas</th><th></th></tr></thead><tbody id="produccionTabla"></tbody></table></section>
 <section id="calendario" class="section"><h1>Calendario / Agenda</h1><div class="subtitle">Crear, editar y borrar tareas</div><div class="calendar-controls"><select id="calendarMonth" onchange="renderCalendar()"></select><select id="calendarYear" onchange="renderCalendar()"></select><button class="secondary" onclick="hoy()">Mes actual</button></div><div class="agenda-panel"><h3 id="selectedDateTitle">Selecciona un día</h3><input type="hidden" id="agendaId"><div class="agenda-form"><input id="agendaFecha" type="date"><input id="agendaHora" type="time"><input id="agendaCliente" placeholder="Cliente / proyecto"><select id="agendaTipo"><option>Tarea</option><option>Reunión</option><option>Rodaje</option><option>Entrega</option><option>Publicación</option><option>Pago</option></select><input id="agendaTitulo" placeholder="Qué tengo que hacer"><textarea id="agendaNotas" placeholder="Notas"></textarea></div><div class="top-actions"><button class="save" onclick="guardarTareaAgenda()">Guardar tarea</button><button class="secondary" onclick="limpiarTarea()">Nueva tarea</button></div><div id="agendaLista"></div></div><div class="calendar" id="calendarGrid"></div></section>
 <section id="redes" class="section"><h1>Redes Sociales</h1><div class="subtitle">Usuarios y passwords internos</div><div class="top-actions"><button class="add" onclick="toggleForm('redForm')">+ Nuevo acceso</button></div><div class="form-card" id="redForm"><div class="form-grid"><input id="redCliente" placeholder="Cliente"><input id="redInstagram" placeholder="Instagram usuario"><input id="redInstagramPass" placeholder="Instagram password"><input id="redTiktok" placeholder="TikTok usuario"><input id="redTiktokPass" placeholder="TikTok password"><input id="redFacebook" placeholder="Facebook usuario"><input id="redFacebookPass" placeholder="Facebook password"><input id="redGoogle" placeholder="Google Business email"><input id="redGooglePass" placeholder="Google Business password"><textarea id="redNotas" placeholder="Notas"></textarea></div><button class="save" onclick="guardarRed()">Guardar acceso</button></div><table class="table"><thead><tr><th>Cliente</th><th>Instagram</th><th>TikTok</th><th>Facebook</th><th>Google</th><th></th></tr></thead><tbody id="redesTabla"></tbody></table></section>
@@ -491,8 +308,21 @@ textarea:focus{
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script>
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);const tables=['clientes','facturas','gastos','produccion','redes','planner','tareas'];const db={clientes:[],facturas:[],gastos:[],produccion:[],redes:[],planner:[],tareas:[]};function logout(){localStorage.removeItem('now_user');window.location.href='/index.html'}function showSection(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}function toggleForm(id){document.getElementById(id).classList.toggle('active')}function euro(v){return Number(v||0).toFixed(2)+'€'}function pass(v){return v?'••••••':'-'}async function insertOrUpdate(table,id,data){let q=id?sb.from(table).update(data).eq('id',id):sb.from(table).insert(data);const{error}=await q;if(error)alert(error.message)}async function del(table,id){if(confirm('¿Borrar este registro?'))await sb.from(table).delete().eq('id',id)}async function loadAll(){for(const t of tables){const{data,error}=await sb.from(t).select('*').order('created_at',{ascending:false});db[t]=error?[]:(data||[])}render()}function subscribe(){tables.forEach(t=>sb.channel('rt_'+t).on('postgres_changes',{event:'*',schema:'public',table:t},()=>loadAll()).subscribe())}
 function nuevoCliente(){clienteId.value='';clienteForm.classList.add('active')}function editarCliente(id){const r=db.clientes.find(x=>x.id===id);if(!r)return;clienteId.value=r.id;clienteEncargado.value=r.encargado||'';clienteTelefono.value=r.telefono||'';clienteEmail.value=r.email||'';clienteEmpresa.value=r.empresa||'';clienteDireccionEmpresa.value=r.direccion_empresa||'';clienteCif.value=r.cif||'';clienteTelefonoEmpresa.value=r.telefono_empresa||'';clienteEmailEmpresa.value=r.email_empresa||'';clientePack.value=r.pack||'Básico';clienteEstado.value=r.estado||'Activo';clienteNotas.value=r.notas||'';clienteForm.classList.add('active')}function guardarCliente(){insertOrUpdate('clientes',clienteId.value,{encargado:clienteEncargado.value,telefono:clienteTelefono.value,email:clienteEmail.value,empresa:clienteEmpresa.value,direccion_empresa:clienteDireccionEmpresa.value,cif:clienteCif.value,telefono_empresa:clienteTelefonoEmpresa.value,email_empresa:clienteEmailEmpresa.value,pack:clientePack.value,estado:clienteEstado.value,notas:clienteNotas.value});clienteForm.classList.remove('active')}
-function nuevaFactura(){facturaId.value='';facturaForm.classList.add('active')}function editarFactura(id){const r=db.facturas.find(x=>x.id===id);if(!r)return;facturaId.value=r.id;facturaNumero.value=r.numero||'';facturaTipo.value=r.tipo||'Proforma';facturaCliente.value=r.cliente||'';facturaConcepto.value=r.concepto||'';facturaBase.value=r.base||'';facturaIgic.value=r.igic_pct||7;facturaEstado.value=r.estado||'Pendiente';facturaFecha.value=r.fecha||'';facturaNotas.value=r.notas||'';facturaForm.classList.add('active')}function guardarFactura(){let base=Number(facturaBase.value||0),igic_pct=Number(facturaIgic.value||0),igic=base*igic_pct/100,total=base+igic;insertOrUpdate('facturas',facturaId.value,{numero:facturaNumero.value,tipo:facturaTipo.value,cliente:facturaCliente.value,concepto:facturaConcepto.value,base,igic_pct,igic,total,estado:facturaEstado.value,fecha:facturaFecha.value||null,notas:facturaNotas.value});facturaForm.classList.remove('active')}
-function nuevoGasto(){gastoId.value='';gastoForm.classList.add('active')}function editarGasto(id){const r=db.gastos.find(x=>x.id===id);if(!r)return;gastoId.value=r.id;gastoFecha.value=r.fecha||'';gastoProveedor.value=r.proveedor||'';gastoConcepto.value=r.concepto||'';gastoCategoria.value=r.categoria||'Otros';gastoBase.value=r.base||'';gastoIgic.value=r.igic_pct||7;gastoMetodo.value=r.metodo||'Tarjeta';gastoNotas.value=r.notas||'';gastoForm.classList.add('active')}function guardarGasto(){let base=Number(gastoBase.value||0),igic_pct=Number(gastoIgic.value||0),igic=base*igic_pct/100,total=base+igic;insertOrUpdate('gastos',gastoId.value,{fecha:gastoFecha.value||null,proveedor:gastoProveedor.value,concepto:gastoConcepto.value,categoria:gastoCategoria.value,base,igic_pct,igic,total,metodo:gastoMetodo.value,notas:gastoNotas.value});gastoForm.classList.remove('active')}
+
+async function subirArchivo(inputId, carpeta, actualUrl=''){
+  const input = document.getElementById(inputId);
+  if(!input || !input.files || !input.files[0]) return actualUrl || '';
+  const file = input.files[0];
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+  const path = `${carpeta}/${Date.now()}-${safeName}`;
+  const { error } = await sb.storage.from('facturas').upload(path, file, { upsert:false });
+  if(error){ alert('Error subiendo archivo: ' + error.message); return actualUrl || ''; }
+  const { data } = sb.storage.from('facturas').getPublicUrl(path);
+  return data.publicUrl;
+}
+
+function nuevaFactura(){facturaId.value='';facturaForm.classList.add('active')}function editarFactura(id){const r=db.facturas.find(x=>x.id===id);if(!r)return;facturaId.value=r.id;facturaNumero.value=r.numero||'';facturaTipo.value=r.tipo||'Proforma';facturaCliente.value=r.cliente||'';facturaConcepto.value=r.concepto||'';facturaBase.value=r.base||'';facturaIgic.value=r.igic_pct||7;facturaEstado.value=r.estado||'Pendiente';facturaFecha.value=r.fecha||'';facturaNotas.value=r.notas||'';facturaForm.classList.add('active')}async function guardarFactura(){let base=Number(facturaBase.value||0),igic_pct=Number(facturaIgic.value||0),igic=base*igic_pct/100,total=base+igic;const actual=db.facturas.find(x=>x.id===facturaId.value);const archivo_url=await subirArchivo('facturaArchivo','facturas',actual?.archivo_url||'');await insertOrUpdate('facturas',facturaId.value,{numero:facturaNumero.value,tipo:facturaTipo.value,cliente:facturaCliente.value,concepto:facturaConcepto.value,base,igic_pct,igic,total,estado:facturaEstado.value,fecha:facturaFecha.value||null,notas:facturaNotas.value,archivo_url});facturaForm.classList.remove('active')}
+function nuevoGasto(){gastoId.value='';gastoForm.classList.add('active')}function editarGasto(id){const r=db.gastos.find(x=>x.id===id);if(!r)return;gastoId.value=r.id;gastoFecha.value=r.fecha||'';gastoProveedor.value=r.proveedor||'';gastoConcepto.value=r.concepto||'';gastoCategoria.value=r.categoria||'Otros';gastoBase.value=r.base||'';gastoIgic.value=r.igic_pct||7;gastoMetodo.value=r.metodo||'Tarjeta';gastoNotas.value=r.notas||'';gastoForm.classList.add('active')}async function guardarGasto(){let base=Number(gastoBase.value||0),igic_pct=Number(gastoIgic.value||0),igic=base*igic_pct/100,total=base+igic;const actual=db.gastos.find(x=>x.id===gastoId.value);const archivo_url=await subirArchivo('gastoArchivo','gastos',actual?.archivo_url||'');await insertOrUpdate('gastos',gastoId.value,{fecha:gastoFecha.value||null,proveedor:gastoProveedor.value,concepto:gastoConcepto.value,categoria:gastoCategoria.value,base,igic_pct,igic,total,metodo:gastoMetodo.value,notas:gastoNotas.value,archivo_url});gastoForm.classList.remove('active')}
 function guardarProduccion(){insertOrUpdate('produccion','',{proyecto:prodProyecto.value,cliente:prodCliente.value,fecha:prodFecha.value||null,estado:prodEstado.value,notas:prodNotas.value})}function guardarRed(){insertOrUpdate('redes','',{cliente:redCliente.value,instagram:redInstagram.value,instagram_pass:redInstagramPass.value,tiktok:redTiktok.value,tiktok_pass:redTiktokPass.value,facebook:redFacebook.value,facebook_pass:redFacebookPass.value,google:redGoogle.value,google_pass:redGooglePass.value,notas:redNotas.value})}function guardarPlanner(){insertOrUpdate('planner','',{proyecto:planProyecto.value,fecha:planFecha.value||null,hora:planHora.value||null,cliente:planCliente.value,red:planRed.value,tipo:planTipo.value,estado:planEstado.value,caption:planCaption.value,hashtags:planHashtags.value,archivos:planArchivos.value})}
 function limpiarTarea(){agendaId.value='';agendaHora.value='';agendaCliente.value='';agendaTipo.value='Tarea';agendaTitulo.value='';agendaNotas.value=''}function editarTarea(id){const r=db.tareas.find(x=>x.id===id);if(!r)return;agendaId.value=r.id;agendaFecha.value=r.fecha||'';agendaHora.value=r.hora||'';agendaCliente.value=r.cliente||'';agendaTipo.value=r.tipo||'Tarea';agendaTitulo.value=r.titulo||'';agendaNotas.value=r.notas||'';selectedDateTitle.innerText='Editando tarea del '+agendaFecha.value}function guardarTareaAgenda(){if(!agendaFecha.value||!agendaTitulo.value)return alert('Completa fecha y tarea');insertOrUpdate('tareas',agendaId.value,{fecha:agendaFecha.value,hora:agendaHora.value||null,cliente:agendaCliente.value,tipo:agendaTipo.value,titulo:agendaTitulo.value,notas:agendaNotas.value});limpiarTarea()}
 function generarPDF(id){const r=db.facturas.find(x=>x.id===id);if(!r)return;const c=db.clientes.find(x=>(x.empresa||'').toLowerCase()===(r.cliente||'').toLowerCase()||(x.encargado||'').toLowerCase()===(r.cliente||'').toLowerCase());const w=window.open('','_blank');w.document.write(`<!doctype html><html><head><title>${r.tipo} ${r.numero}</title><style>body{font-family:Arial;padding:40px;color:#111}.top{display:flex;justify-content:space-between;border-bottom:3px solid #ff6a00;padding-bottom:20px}.brand{font-size:32px;font-weight:bold}.orange{color:#ff6a00}table{width:100%;border-collapse:collapse;margin-top:30px}th,td{border:1px solid #ddd;padding:12px;text-align:left}th{background:#111;color:white}.totals{margin-top:30px;margin-left:auto;width:300px}.totals div{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #ddd}.total{font-size:22px;font-weight:bold;color:#ff6a00}.footer{margin-top:60px;font-size:12px;color:#555}@media print{button{display:none}}
@@ -765,191 +595,8 @@ textarea:focus{
 }
 
 
-/* NOW INDEX MATCHING THEME */
-*{
-  box-shadow:none!important;
-  text-shadow:none!important;
-  animation:none!important;
-}
-
-html,body{
-  background:
-    radial-gradient(circle at top right, rgba(255,106,0,.10), transparent 30%),
-    linear-gradient(180deg,#000000,#050505)!important;
-  color:white!important;
-}
-
-.sidebar{
-  background:#0b0b0b!important;
-  border-right:1px solid #1f1f1f!important;
-}
-
-.main{
-  background:
-    radial-gradient(circle at top right, rgba(255,106,0,.10), transparent 30%),
-    linear-gradient(180deg,#000000,#050505)!important;
-}
-
-.brand-title,
-.main-title,
-h1{
-  color:#ffffff!important;
-}
-
-.orange,
-.brand-orange,
-.logo-now{
-  color:#ff6a00!important;
-}
-
-.white,
-.brand-white{
-  color:#ffffff!important;
-}
-
-.menu button,
-.add,
-.save,
-.secondary,
-.pdf{
-  background:#1c1c1c!important;
-  border:1px solid rgba(255,106,0,.18)!important;
-  color:#ff6a00!important;
-  box-shadow:none!important;
-  transform:none!important;
-}
-
-.menu button:hover,
-.menu button.active,
-.add:hover,
-.save:hover,
-.secondary:hover,
-.pdf:hover{
-  background:#ff6a00!important;
-  color:#ffffff!important;
-  border-color:#ff6a00!important;
-  transform:none!important;
-}
-
-.danger{
-  background:#1c1c1c!important;
-  border:1px solid rgba(255,80,80,.25)!important;
-  color:#ff6666!important;
-}
-
-.danger:hover{
-  background:#c0392b!important;
-  color:white!important;
-}
-
-.card,
-.form-card,
-.agenda-panel,
-.alert-card,
-.client-profile,
-.profile-box,
-.finance-kpi,
-.chart-box{
-  background:#0b0b0b!important;
-  border:1px solid #1f1f1f!important;
-  border-radius:22px!important;
-  box-shadow:none!important;
-  transform:none!important;
-}
-
-.card:hover,
-.form-card:hover,
-.agenda-panel:hover,
-.alert-card:hover,
-.client-profile:hover,
-.profile-box:hover{
-  border-color:rgba(255,106,0,.30)!important;
-  transform:none!important;
-  box-shadow:none!important;
-}
-
-.card h3,
-.alert-card h3,
-.profile-box strong,
-h2{
-  color:#ff8c2b!important;
-}
-
-.subtitle,
-.small,
-.card p,
-.footer{
-  color:#8f8f8f!important;
-}
-
-input,
-select,
-textarea{
-  background:#111111!important;
-  border:1px solid #222!important;
-  color:white!important;
-  border-radius:14px!important;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#ff6a00!important;
-  background:#141414!important;
-  outline:none!important;
-}
-
-.table{
-  background:#0b0b0b!important;
-  border:1px solid #1f1f1f!important;
-  border-radius:18px!important;
-}
-
-.table th{
-  background:#111111!important;
-  color:#ff8c2b!important;
-  border-bottom:1px solid #1f1f1f!important;
-}
-
-.table td{
-  border-bottom:1px solid #1f1f1f!important;
-}
-
-.table tbody tr:hover{
-  background:#111111!important;
-}
-
-.badge,
-.event{
-  background:#111111!important;
-  border:1px solid rgba(255,106,0,.18)!important;
-  color:#ff8c2b!important;
-}
-
-.day{
-  background:#0b0b0b!important;
-  border:1px solid #1f1f1f!important;
-}
-
-.day:hover,
-.day.selected{
-  border-color:#ff6a00!important;
-  background:#111111!important;
-}
-
-.beta-toolbar{
-  background:#0b0b0b!important;
-  border:1px solid #1f1f1f!important;
-}
-
-.task-row{
-  background:#111111!important;
-  border:1px solid #1f1f1f!important;
-}
-
-.logo{
-  filter:none!important;
-}
+input[type="file"]{border:1px dashed rgba(255,106,0,.45)!important;padding:16px!important;cursor:pointer}
+input[type="file"]::file-selector-button{background:#1c1c1c;color:#ff6a00;border:1px solid rgba(255,106,0,.25);border-radius:10px;padding:10px 12px;margin-right:12px;cursor:pointer}
 
 </style></head><body><button onclick="window.print()">Descargar / imprimir PDF</button><div class="top"><div><div class="brand"><span class="orange">NOW</span> Agency</div><p>Creative Agency</p><p>hola@nowagency.es · +34 666 962 212</p></div><div><h1>${r.tipo||'Factura'}</h1><p><b>Nº:</b> ${r.numero||''}</p><p><b>Fecha:</b> ${r.fecha||new Date().toISOString().slice(0,10)}</p></div></div><h2>Cliente</h2><p><b>${r.cliente||''}</b></p><p>${c?.direccion_empresa||''}</p><p>${c?.cif?'CIF: '+c.cif:''}</p><p>${c?.email_empresa||c?.email||''}</p><table><thead><tr><th>Concepto</th><th>Base</th><th>IGIC</th><th>Total</th></tr></thead><tbody><tr><td>${r.concepto||''}<br><small>${r.notas||''}</small></td><td>${euro(r.base)}</td><td>${r.igic_pct||0}% · ${euro(r.igic)}</td><td>${euro(r.total)}</td></tr></tbody></table><div class="totals"><div><span>Base</span><b>${euro(r.base)}</b></div><div><span>IGIC</span><b>${euro(r.igic)}</b></div><div class="total"><span>Total</span><b>${euro(r.total)}</b></div></div><div class="footer">Documento generado desde NOW Agency CRM. Válido como ${r.tipo||'documento'}.</div></body></html>`);w.document.close()}
 
@@ -1030,7 +677,7 @@ function renderAlerts(){
 function render(){const ingresos=db.facturas.reduce((a,b)=>a+Number(b.total||0),0),gastos=db.gastos.reduce((a,b)=>a+Number(b.total||0),0);countClientes.innerText=db.clientes.length;countFacturas.innerText=euro(ingresos);countGastos.innerText=euro(gastos);countBalance.innerText=euro(ingresos-gastos);countPlanner.innerText=db.planner.length;countTareas.innerText=db.tareas.length;finIngresos.innerText=euro(ingresos);finGastos.innerText=euro(gastos);finBalance.innerText=euro(ingresos-gastos);clientesTabla.innerHTML=db.clientes.map(r=>`<tr><td>${r.encargado||''}<br><span class="small">${r.telefono||''}<br>${r.email||''}</span></td><td>${r.empresa||''}</td><td>${r.direccion_empresa||''}</td><td>${r.cif||''}</td><td>${r.email_empresa||''}</td><td><span class="badge">${r.pack||''}</span></td><td><span class="badge">${r.estado||''}</span></td><td><div class="actions"><button class="secondary" onclick="openClientProfile('${r.id}')">Ficha</button><button class="secondary" onclick="editarCliente('${r.id}')">Editar</button><button class="danger" onclick="del('clientes','${r.id}')">Borrar</button></div></td></tr>`).join('');let facturasView=db.facturas;
 if(window.filterFacturaCliente && filterFacturaCliente.value) facturasView=facturasView.filter(r=>(r.cliente||'').toLowerCase().includes(filterFacturaCliente.value.toLowerCase()));
 if(window.filterFacturaEstado && filterFacturaEstado.value) facturasView=facturasView.filter(r=>r.estado===filterFacturaEstado.value);
-facturasTabla.innerHTML=facturasView.map(r=>`<tr><td>${r.numero||''}</td><td>${r.tipo||''}</td><td>${r.cliente||''}</td><td>${r.concepto||''}</td><td>${euro(r.base)}</td><td>${r.igic_pct||0}%<br>${euro(r.igic)}</td><td>${euro(r.total)}</td><td><span class="badge">${r.estado||''}</span></td><td><div class="actions"><button class="secondary" onclick="editarFactura('${r.id}')">Editar</button><button class="pdf" onclick="generarPDF('${r.id}')">PDF</button><button class="danger" onclick="del('facturas','${r.id}')">Borrar</button></div></td></tr>`).join('');gastosTabla.innerHTML=db.gastos.map(r=>`<tr><td>${r.fecha||''}</td><td>${r.proveedor||''}</td><td>${r.concepto||''}</td><td>${r.categoria||''}</td><td>${euro(r.total)}</td><td><div class="actions"><button class="secondary" onclick="editarGasto('${r.id}')">Editar</button><button class="danger" onclick="del('gastos','${r.id}')">Borrar</button></div></td></tr>`).join('');produccionTabla.innerHTML=db.produccion.map(r=>`<tr><td>${r.proyecto||''}</td><td>${r.cliente||''}</td><td>${r.fecha||''}</td><td>${r.estado||''}</td><td>${r.notas||''}</td><td><button class="danger" onclick="del('produccion','${r.id}')">Borrar</button></td></tr>`).join('');redesTabla.innerHTML=db.redes.map(r=>`<tr><td>${r.cliente||''}</td><td>${r.instagram||''}<br>${pass(r.instagram_pass)}</td><td>${r.tiktok||''}<br>${pass(r.tiktok_pass)}</td><td>${r.facebook||''}<br>${pass(r.facebook_pass)}</td><td>${r.google||''}<br>${pass(r.google_pass)}</td><td><button class="danger" onclick="del('redes','${r.id}')">Borrar</button></td></tr>`).join('');let plannerView=db.planner;
+facturasTabla.innerHTML=facturasView.map(r=>`<tr><td>${r.numero||''}</td><td>${r.tipo||''}</td><td>${r.cliente||''}</td><td>${r.concepto||''}</td><td>${euro(r.base)}</td><td>${r.igic_pct||0}%<br>${euro(r.igic)}</td><td>${euro(r.total)}</td><td><span class="badge">${r.estado||''}</span></td><td>${r.archivo_url?`<a style="color:#ff8c2b" href="${r.archivo_url}" target="_blank">Ver archivo</a>`:'-'}</td><td><div class="actions"><button class="secondary" onclick="editarFactura('${r.id}')">Editar</button><button class="pdf" onclick="generarPDF('${r.id}')">PDF</button><button class="danger" onclick="del('facturas','${r.id}')">Borrar</button></div></td></tr>`).join('');gastosTabla.innerHTML=db.gastos.map(r=>`<tr><td>${r.fecha||''}</td><td>${r.proveedor||''}</td><td>${r.concepto||''}</td><td>${r.categoria||''}</td><td>${euro(r.total)}</td><td>${r.archivo_url?`<a style="color:#ff8c2b" href="${r.archivo_url}" target="_blank">Ver archivo</a>`:'-'}</td><td><div class="actions"><button class="secondary" onclick="editarGasto('${r.id}')">Editar</button><button class="danger" onclick="del('gastos','${r.id}')">Borrar</button></div></td></tr>`).join('');produccionTabla.innerHTML=db.produccion.map(r=>`<tr><td>${r.proyecto||''}</td><td>${r.cliente||''}</td><td>${r.fecha||''}</td><td>${r.estado||''}</td><td>${r.notas||''}</td><td><button class="danger" onclick="del('produccion','${r.id}')">Borrar</button></td></tr>`).join('');redesTabla.innerHTML=db.redes.map(r=>`<tr><td>${r.cliente||''}</td><td>${r.instagram||''}<br>${pass(r.instagram_pass)}</td><td>${r.tiktok||''}<br>${pass(r.tiktok_pass)}</td><td>${r.facebook||''}<br>${pass(r.facebook_pass)}</td><td>${r.google||''}<br>${pass(r.google_pass)}</td><td><button class="danger" onclick="del('redes','${r.id}')">Borrar</button></td></tr>`).join('');let plannerView=db.planner;
 if(window.filterPlannerCliente && filterPlannerCliente.value) plannerView=plannerView.filter(r=>(r.cliente||'').toLowerCase().includes(filterPlannerCliente.value.toLowerCase()));
 if(window.filterPlannerEstado && filterPlannerEstado.value) plannerView=plannerView.filter(r=>r.estado===filterPlannerEstado.value);
 plannerTabla.innerHTML=plannerView.map(r=>`<tr><td>${r.proyecto||''}</td><td>${r.fecha||''}</td><td>${r.cliente||''}</td><td>${r.red||''}</td><td>${r.tipo||''}</td><td><span class="badge">${r.estado||''}</span></td><td><button class="danger" onclick="del('planner','${r.id}')">Borrar</button></td></tr>`).join('');renderAlerts();renderCalendar();}
