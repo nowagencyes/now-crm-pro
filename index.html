@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
 <title>NOW Agency CRM</title>
 
 <link rel="preconnect" href="https://fonts.cdnfonts.com">
-<link href="https://fonts.cdnfonts.com/css/ethnocentric" rel="stylesheet">
+
+<link
+href="https://fonts.cdnfonts.com/css/ethnocentric"
+rel="stylesheet"
+>
 
 <style>
 
@@ -19,28 +29,44 @@ box-sizing:border-box;
 
 html,
 body{
+
 width:100%;
 height:100%;
+
 overflow:hidden;
+
 font-family:Arial, Helvetica, sans-serif;
 
 background:
-radial-gradient(circle at top right, rgba(255,106,0,.10), transparent 30%),
-linear-gradient(180deg,#000000,#050505);
+radial-gradient(
+circle at top right,
+rgba(255,106,0,.10),
+transparent 30%
+),
+linear-gradient(
+180deg,
+#000000,
+#050505
+);
 
 color:white;
 }
 
 body{
+
 display:flex;
+
 justify-content:center;
+
 align-items:center;
+
 padding:20px;
 }
 
 .login-box{
 
 width:100%;
+
 max-width:430px;
 
 background:#0b0b0b;
@@ -53,15 +79,21 @@ padding:42px 32px;
 
 position:relative;
 
+z-index:10;
+
 box-shadow:
 0 0 30px rgba(0,0,0,.55);
 
 }
 
 .logo{
+
 width:115px;
+
 display:block;
+
 margin:auto;
+
 margin-bottom:26px;
 }
 
@@ -87,18 +119,28 @@ color:#ffffff;
 }
 
 .subtitle{
+
 text-align:center;
+
 font-size:14px;
+
 color:#8f8f8f;
+
 margin-bottom:35px;
 }
 
 label{
+
 display:block;
+
 margin-bottom:10px;
+
 margin-top:20px;
+
 font-size:14px;
+
 font-weight:bold;
+
 color:#ff8c2b;
 }
 
@@ -128,7 +170,6 @@ input:focus{
 border-color:#ff6a00;
 
 background:#141414;
-
 }
 
 button{
@@ -163,7 +204,6 @@ button:hover{
 background:#ff6a00;
 
 color:white;
-
 }
 
 .error{
@@ -180,26 +220,7 @@ font-weight:bold;
 }
 
 .users{
-
-margin-top:30px;
-
-background:#111111;
-
-border:1px solid #1f1f1f;
-
-border-radius:16px;
-
-padding:18px;
-
-font-size:13px;
-
-line-height:1.8;
-
-color:#bdbdbd;
-}
-
-.users strong{
-color:#ff8c2b;
+display:none;
 }
 
 .footer{
@@ -216,7 +237,9 @@ color:#666;
 @media(max-width:480px){
 
 .login-box{
+
 padding:30px 24px;
+
 border-radius:22px;
 }
 
@@ -239,24 +262,37 @@ padding:15px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="login-box">
 
-<img src="assets/now-logo.png" class="logo">
+<img
+src="assets/now-logo.png"
+class="logo"
+>
 
 <h1>
-<span class="now">NOW</span>
-<span class="white">Agency CRM</span>
+
+<span class="now">
+NOW
+</span>
+
+<span class="white">
+Agency CRM
+</span>
+
 </h1>
 
 <div class="subtitle">
 Creative Agency Management System
 </div>
 
-<label>Usuario</label>
+<label>
+Usuario
+</label>
 
 <input
 type="text"
@@ -265,7 +301,9 @@ placeholder="Ingresa tu usuario"
 autocomplete="username"
 >
 
-<label>Contraseña</label>
+<label>
+Contraseña
+</label>
 
 <input
 type="password"
@@ -278,11 +316,16 @@ autocomplete="current-password"
 Entrar al CRM
 </button>
 
-<div class="error" id="error"></div>
+<div
+class="error"
+id="error"
+></div>
 
 <div class="users">
 
-<strong>Usuarios demo</strong>
+<strong>
+Usuarios demo
+</strong>
 
 <br><br>
 
@@ -295,7 +338,7 @@ panchonow / now123456
 </div>
 
 <div class="footer">
-NOW Agency CRM · Beta Professional
+NOW Agency CRM
 </div>
 
 </div>
@@ -305,12 +348,14 @@ NOW Agency CRM · Beta Professional
 function login(){
 
 const user =
-document.getElementById('user')
+document
+.getElementById('user')
 .value
 .trim();
 
 const pass =
-document.getElementById('pass')
+document
+.getElementById('pass')
 .value
 .trim();
 
@@ -348,7 +393,8 @@ window.location.href =
 return;
 }
 
-document.getElementById('error')
+document
+.getElementById('error')
 .innerHTML =
 "Usuario o contraseña incorrectos";
 
