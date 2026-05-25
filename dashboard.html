@@ -315,6 +315,43 @@ input[type="file"]::file-selector-button{background:#1c1c1c;color:#ff6a00;border
   text-align:center!important;
 }
 
+
+/* BOTONES VISIBLES FOTO FACTURA / GASTO */
+.upload-box{
+  background:#111111!important;
+  border:1px dashed rgba(255,106,0,.45)!important;
+  border-radius:14px!important;
+  padding:14px!important;
+  margin-top:12px!important;
+}
+.upload-label{
+  display:block!important;
+  width:100%!important;
+  background:#1c1c1c!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+  color:#ff6a00!important;
+  border-radius:12px!important;
+  padding:14px!important;
+  text-align:center!important;
+  font-weight:bold!important;
+  cursor:pointer!important;
+  margin:0!important;
+}
+.upload-label:hover{
+  background:#ff6a00!important;
+  color:#ffffff!important;
+}
+.hidden-file{
+  display:none!important;
+}
+.upload-name{
+  display:block!important;
+  margin-top:10px!important;
+  font-size:12px!important;
+  color:#bdbdbd!important;
+  text-align:center!important;
+}
+
 </style>
 </head>
 <body>
@@ -339,6 +376,8 @@ input[type="file"]::file-selector-button{background:#1c1c1c;color:#ff6a00;border
   <input id="facturaArchivo" class="hidden-file" type="file" accept="image/*,application/pdf" capture="environment" onchange="mostrarArchivoSeleccionado('facturaArchivo','facturaArchivoNombre')">
   <span id="facturaArchivoNombre" class="upload-name">Ningún archivo seleccionado</span>
 </div>
+
+
 </div><button class="save" onclick="guardarFactura()">Guardar factura</button></div><table class="table"><thead><tr><th>Nº</th><th>Tipo</th><th>Cliente</th><th>Concepto</th><th>Base</th><th>IGIC</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="facturasTabla"></tbody></table></section>
 <section id="finanzas" class="section"><h1>Finanzas</h1><div class="subtitle">Crear y editar gastos</div><div class="cards"><div class="card"><h3 id="finIngresos">0€</h3><p>Ingresos</p></div><div class="card"><h3 id="finGastos">0€</h3><p>Gastos</p></div><div class="card"><h3 id="finBalance">0€</h3><p>Balance</p></div></div><div class="top-actions"><button class="add" onclick="nuevoGasto()">+ Nuevo gasto</button></div><div class="form-card" id="gastoForm"><input type="hidden" id="gastoId"><div class="form-grid"><input id="gastoFecha" type="date"><input id="gastoProveedor" placeholder="Proveedor"><input id="gastoConcepto" placeholder="Concepto"><select id="gastoCategoria"><option>Software</option><option>Publicidad</option><option>Producción</option><option>Transporte</option><option>Material</option><option>Impuestos</option><option>Otros</option></select><input id="gastoBase" type="number" placeholder="Base €"><input id="gastoIgic" type="number" value="7" placeholder="IGIC/IVA %"><select id="gastoMetodo"><option>Tarjeta</option><option>Transferencia</option><option>Efectivo</option><option>Bizum</option></select><textarea id="gastoNotas" placeholder="Notas"></textarea>
 <div class="upload-box">
@@ -346,6 +385,8 @@ input[type="file"]::file-selector-button{background:#1c1c1c;color:#ff6a00;border
   <input id="gastoArchivo" class="hidden-file" type="file" accept="image/*,application/pdf" capture="environment" onchange="mostrarArchivoSeleccionado('gastoArchivo','gastoArchivoNombre')">
   <span id="gastoArchivoNombre" class="upload-name">Ningún archivo seleccionado</span>
 </div>
+
+
 </div><button class="save" onclick="guardarGasto()">Guardar gasto</button></div><table class="table"><thead><tr><th>Fecha</th><th>Proveedor</th><th>Concepto</th><th>Categoría</th><th>Total</th><th>Archivo</th><th>Acciones</th></tr></thead><tbody id="gastosTabla"></tbody></table></section>
 <section id="produccion" class="section"><h1>Producción</h1><div class="subtitle">Rodajes, shootings y entregas</div><div class="top-actions"><button class="add" onclick="toggleForm('produccionForm')">+ Nueva producción</button></div><div class="form-card" id="produccionForm"><div class="form-grid"><input id="prodProyecto" placeholder="Proyecto"><input id="prodCliente" placeholder="Cliente"><input id="prodFecha" type="date"><select id="prodEstado"><option>Briefing</option><option>Planificado</option><option>Grabando</option><option>Editando</option><option>Entregado</option></select><textarea id="prodNotas" placeholder="Notas"></textarea></div><button class="save" onclick="guardarProduccion()">Guardar producción</button></div><table class="table"><thead><tr><th>Proyecto</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th>Notas</th><th></th></tr></thead><tbody id="produccionTabla"></tbody></table></section>
 <section id="calendario" class="section"><h1>Calendario / Agenda</h1><div class="subtitle">Crear, editar y borrar tareas</div><div class="calendar-controls"><select id="calendarMonth" onchange="renderCalendar()"></select><select id="calendarYear" onchange="renderCalendar()"></select><button class="secondary" onclick="hoy()">Mes actual</button></div><div class="agenda-panel"><h3 id="selectedDateTitle">Selecciona un día</h3><input type="hidden" id="agendaId"><div class="agenda-form"><input id="agendaFecha" type="date"><input id="agendaHora" type="time"><input id="agendaCliente" placeholder="Cliente / proyecto"><select id="agendaTipo"><option>Tarea</option><option>Reunión</option><option>Rodaje</option><option>Entrega</option><option>Publicación</option><option>Pago</option></select><input id="agendaTitulo" placeholder="Qué tengo que hacer"><textarea id="agendaNotas" placeholder="Notas"></textarea></div><div class="top-actions"><button class="save" onclick="guardarTareaAgenda()">Guardar tarea</button><button class="secondary" onclick="limpiarTarea()">Nueva tarea</button></div><div id="agendaLista"></div></div><div class="calendar" id="calendarGrid"></div></section>
@@ -660,6 +701,43 @@ input[type="file"]::file-selector-button{background:#1c1c1c;color:#ff6a00;border
   border:1px dashed rgba(255,106,0,.45)!important;
   border-radius:14px!important;
   padding:14px!important;
+}
+.upload-label{
+  display:block!important;
+  width:100%!important;
+  background:#1c1c1c!important;
+  border:1px solid rgba(255,106,0,.25)!important;
+  color:#ff6a00!important;
+  border-radius:12px!important;
+  padding:14px!important;
+  text-align:center!important;
+  font-weight:bold!important;
+  cursor:pointer!important;
+  margin:0!important;
+}
+.upload-label:hover{
+  background:#ff6a00!important;
+  color:#ffffff!important;
+}
+.hidden-file{
+  display:none!important;
+}
+.upload-name{
+  display:block!important;
+  margin-top:10px!important;
+  font-size:12px!important;
+  color:#bdbdbd!important;
+  text-align:center!important;
+}
+
+
+/* BOTONES VISIBLES FOTO FACTURA / GASTO */
+.upload-box{
+  background:#111111!important;
+  border:1px dashed rgba(255,106,0,.45)!important;
+  border-radius:14px!important;
+  padding:14px!important;
+  margin-top:12px!important;
 }
 .upload-label{
   display:block!important;
