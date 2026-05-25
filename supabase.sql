@@ -1,89 +1,65 @@
--- NOW CRM PRO V2 - Supabase limpio
 create extension if not exists "pgcrypto";
 
 create table if not exists clientes (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid default auth.uid(),
-  created_at timestamptz default now(),
-  nombre text,
-  empresa text,
-  email text,
-  servicio text,
-  estado text
-);
+id uuid primary key default gen_random_uuid(),
+created_at timestamptz default now(),
+encargado text, telefono text, email text, empresa text, direccion_empresa text, cif text,
+telefono_empresa text, email_empresa text, pack text, estado text, notas text);
 
 create table if not exists facturas (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid default auth.uid(),
-  created_at timestamptz default now(),
-  numero text,
-  tipo text default 'Proforma',
-  cliente text,
-  concepto text,
-  base numeric default 0,
-  igic numeric default 7,
-  estado text
-);
+id uuid primary key default gen_random_uuid(),
+created_at timestamptz default now(),
+numero text, tipo text, cliente text, concepto text, base numeric default 0,
+igic_pct numeric default 7, igic numeric default 0, total numeric default 0, estado text);
 
-create table if not exists social_posts (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid default auth.uid(),
-  created_at timestamptz default now(),
-  fecha date,
-  hora time,
-  cliente text,
-  red text,
-  tipo text,
-  caption text,
-  hashtags text,
-  estado text
-);
+create table if not exists gastos (
+id uuid primary key default gen_random_uuid(),
+created_at timestamptz default now(),
+fecha date, proveedor text, concepto text, categoria text, base numeric default 0,
+igic_pct numeric default 7, igic numeric default 0, total numeric default 0, metodo text, notas text);
 
-create table if not exists social_accounts (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid default auth.uid(),
-  created_at timestamptz default now(),
-  platform text,
-  account_name text,
-  status text,
-  access_token text,
-  refresh_token text,
-  expires_at timestamptz
-);
+create table if not exists produccion (
+id uuid primary key default gen_random_uuid(),
+created_at timestamptz default now(),
+proyecto text, cliente text, fecha date, estado text, notas text);
 
-create table if not exists proyectos (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid default auth.uid(),
-  created_at timestamptz default now(),
-  proyecto text,
-  cliente text,
-  fecha date,
-  estado text,
-  notas text
-);
+create table if not exists redes (
+id uuid primary key default gen_random_uuid(),
+created_at timestamptz default now(),
+cliente text, instagram text, instagram_pass text, tiktok text, tiktok_pass text,
+facebook text, facebook_pass text, google text, google_pass text, notas text);
 
-create table if not exists accesos (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid default auth.uid(),
-  created_at timestamptz default now(),
-  cliente text,
-  instagram text,
-  tiktok text,
-  facebook text,
-  email text,
-  notas text
-);
+create table if not exists planner (
+id uuid primary key default gen_random_uuid(),
+created_at timestamptz default now(),
+proyecto text, fecha date, hora time, cliente text, red text, tipo text, estado text,
+caption text, hashtags text, archivos text);
+
+create table if not exists tareas (
+id uuid primary key default gen_random_uuid(),
+created_at timestamptz default now(),
+fecha date, hora time, cliente text, tipo text, titulo text, notas text);
+
+alter publication supabase_realtime add table clientes;
+alter publication supabase_realtime add table facturas;
+alter publication supabase_realtime add table gastos;
+alter publication supabase_realtime add table produccion;
+alter publication supabase_realtime add table redes;
+alter publication supabase_realtime add table planner;
+alter publication supabase_realtime add table tareas;
 
 alter table clientes enable row level security;
 alter table facturas enable row level security;
-alter table social_posts enable row level security;
-alter table social_accounts enable row level security;
-alter table proyectos enable row level security;
-alter table accesos enable row level security;
+alter table gastos enable row level security;
+alter table produccion enable row level security;
+alter table redes enable row level security;
+alter table planner enable row level security;
+alter table tareas enable row level security;
 
-create policy "own clientes" on clientes for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own facturas" on facturas for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own social_posts" on social_posts for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own social_accounts" on social_accounts for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own proyectos" on proyectos for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy "own accesos" on accesos for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "public clientes" on clientes for all using (true) with check (true);
+create policy "public facturas" on facturas for all using (true) with check (true);
+create policy "public gastos" on gastos for all using (true) with check (true);
+create policy "public produccion" on produccion for all using (true) with check (true);
+create policy "public redes" on redes for all using (true) with check (true);
+create policy "public planner" on planner for all using (true) with check (true);
+create policy "public tareas" on tareas for all using (true) with check (true);
